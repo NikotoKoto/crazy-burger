@@ -1,5 +1,8 @@
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import LoginPage from './components/pages/login/loginPage'
+import OrderPage from './components/pages/order/orderPage'
+import ErrorPage from './components/pages/error/ErrorPage'
 
 function App() {
   //state
@@ -8,7 +11,11 @@ function App() {
 
   //render
   return (
- <LoginPage/>)
+ <Routes>
+  <Route path='/' element={<LoginPage/>}/>
+  <Route path='/order' element={<OrderPage/>}/>
+  <Route path='/*' element={<ErrorPage/>}/>
+ </Routes>)
 }
 
 export default App
