@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 
 export default function loginForm() {
       //state
@@ -8,17 +9,12 @@ export default function loginForm() {
     setInputValue(event.target.value);
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    alert(`Bonjour ${inputValue}`);
-    setInputValue("");
-  };
   return (
     <div>
     <h1>Bievenue chez nous !</h1>
     <br />
     <h2>Conectez-vous</h2>
-    <form action="submit" onSubmit={handleSubmit}>
+    <form action="submit">
       <input
         value={inputValue}
         onChange={handleChange}
@@ -26,7 +22,7 @@ export default function loginForm() {
         placeholder="Entrez votre prenom"
         required
       ></input>
-      <button>Acceder à votre espace</button>
+      <Link to="/order"><button>Acceder à votre espace</button></Link>
     </form>
   </div>
   )
