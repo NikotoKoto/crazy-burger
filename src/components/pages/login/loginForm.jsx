@@ -16,23 +16,23 @@ export default function loginForm() {
     setUsername("");
     navigate(`/order/${username}`);
   };
-  
-//render
+
+  //render
   return (
-    <div>
+    <form action="submit" onSubmit={handleSubmit}>
       <h1>Bievenue chez nous !</h1>
       <br />
       <h2>Conectez-vous</h2>
-      <form action="submit" onSubmit={handleSubmit}>
-        <input
-          value={username}
-          onChange={handleChange}
-          type="text"
-          placeholder="Entrez votre prenom"
-          required
-        ></input>
-        <button>Acceder à votre espace</button>
-      </form>
-    </div>
+      <input
+        value={username}
+        onChange={handleChange}
+        type="text"
+        placeholder="Entrez votre prenom"
+        required
+      ></input>
+      <button>Acceder à votre espace</button>
+    </form>
   );
 }
+
+/** */
