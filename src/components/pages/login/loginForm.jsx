@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { theme } from "../../../theme";
+import { BsPerson } from "react-icons/bs";
 
 export default function LoginForm() {
   //state
   const navigate = useNavigate();
   const [username, setUsername] = useState("");
+
 
   //comportements
   const handleChange = (event) => {
@@ -19,20 +21,24 @@ export default function LoginForm() {
     navigate(`/order/${username}`);
   };
 
+
   //render
   return (
     <LoginFormStyled action="submmit" onSubmit={handleSubmit}>
       <h1>Bievenue chez nous !</h1>
-      <br />
+      <hr />
       <h2>Connectez-vous</h2>
-      <input
-        value={username}
-        onChange={handleChange}
-        type="text"
-        placeholder="Entrez votre prenom"
-        required
-      ></input>
-      <button>Acceder à votre espace</button>
+      <div className="input-container">
+      <BsPerson className="icon-login"/>
+        <input
+          value={username}
+          onChange={handleChange}
+          type="text"
+          placeholder="Entrez votre prenom"
+          required
+        ></input>
+      </div>
+      <button >Acceder à votre espace</button>
     </LoginFormStyled>
   );
 }
@@ -41,16 +47,68 @@ export default function LoginForm() {
 
 
 const LoginFormStyled = styled.form`
-  background : ${theme.colors.greyBlue};
+
+  font-family: "Amatic SC", cursive;
+  text-align: center;
+  max-width: 500px;
+  min-width: 400px;
+  margin: 0px auto;
+  border-radius: 5px;
+
+
+  hr {
+    border: 1.5px solid #f56a2c;
+  }
   h1 {
-    font-size: ${theme.fonts.M};
+    color: white;
+    font-size: ${theme.fonts.P5};
   }
   h2 {
-    font-style: ${theme.fonts};
+    color: blue;
+    font-size: ${theme.fonts.P4};
   }
 
-  button {
-    margin-left: 10px;
-    background-color: blue;
+  .input-container{
+    background-color: #fff;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding: 18px 24px;
+    margin: 18px 0;
+
+    .icon-login{
+      font-size:15px;
+      margin-right: 8px;
+      color:#93a2b1;
+    }
+
+    input{
+      border:none;
+      font-size: 15px;
+      color: #17161a;
+      width: 100%;
+    }
+
+    &::placeholder{
+      background-color: white;
+      color: lightgray;
+    }
   }
+
+ 
+  button {
+    width: 350px;
+    border-radius: 5px;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    background-color: #f56a2c;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+
+
+  
 `;
