@@ -13,11 +13,14 @@ export default function orderPage() {
   return (
     <OrderPageStyled>
       <div className="container">
+        <div className="navbar">
+          Navbar
         <h1>Bienvenue {username}</h1>
-        <Navbar />
-        <Link to="/">
-          <button>Deconnexion</button>
-        </Link>
+          <Link to="/">
+            <button>Deconnexion</button>
+          </Link>
+        </div>
+        <div className="main">Main</div>
       </div>
     </OrderPageStyled>
   );
@@ -33,8 +36,19 @@ align-items: center;
 
     .container{
     background-color: red;
-
     height: 95vh;
     width: 1400px;
-}
-`
+    display: flex;
+    flex-direction:column;
+
+    .navbar{
+      background-color: blue;
+      height: 10vh;
+    }
+    .main{
+      background-color: green;
+      flex: 1; // permet d'utiliser toute la page de flex 
+    }
+    
+  }
+`;
