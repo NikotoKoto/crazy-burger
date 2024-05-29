@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import LogoImg from "../pages/login/assetsLogin/logo-orange.png"
+import { theme } from "../../theme";
 export default function Logo() {
   return (
     <LogoStyled>
@@ -18,13 +19,13 @@ const LogoStyled = styled.div`
 
   h1 {
     font-family: "Amatic SC", cursive;
-    font-size: 36px;
-    font-weight: 700;
+    font-size: ${theme.fonts.size.P4};
+    font-weight: ${theme.fonts.weights.bold};
     line-height: 1em;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     text-align: center;
-    color:#FFA01B;
+    color:${theme.colors.primary};
   }
 
   img{
@@ -32,7 +33,7 @@ const LogoStyled = styled.div`
     object-position: center;
     height: 50px;
     width: 80px;
-    margin: 0 5px;
+    margin: 0 ${theme.gridUnit /2};
 
   }
 `;

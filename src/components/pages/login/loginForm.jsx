@@ -69,17 +69,20 @@ const LoginFormStyled = styled.form`
   max-width: 500px;
   min-width: 400px;
   margin: 0px auto;
-  border-radius: 5px;
+  padding: 2.5rem ${theme.spacing.lg};
+  border-radius: ${theme.borderRadius.round};
 
   hr {
-    border: 1.5px solid #f56a2c;
+    border: 1.5px solid ${theme.colors.loginLine};
+    margin-bottom: ${theme.gridUnit *5}px;
   }
   h1 {
-    color: white;
-    font-size: ${theme.fonts.P5};
+    color: ${theme.colors.white};
+    font-size: ${theme.fonts.size.P5};
   }
   h2 {
-    color: white;
-    font-size: ${theme.fonts.P4};
+    color: ${theme.colors.white};
+    font-size: ${theme.fonts.size.P4};
+    margin: 20px 10px 10px;
   }
 `;

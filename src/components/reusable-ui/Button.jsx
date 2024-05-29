@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { theme } from "../../theme";
 
 export default function Button({IconButton,label, ...restProps}) {
   return (
@@ -10,8 +11,8 @@ export default function Button({IconButton,label, ...restProps}) {
 }
 
 const ButtonStyled = styled.button`
-  background-color: #f56a2c;
-  border-radius: 5px;
+  background-color: ${theme.colors.primary};
+  border-radius: ${theme.borderRadius.round};
   display: flex;
   width: 100%;
   justify-content: center;
@@ -23,29 +24,29 @@ const ButtonStyled = styled.button`
 
   button {
     border: none;
-    font-size: 15px;
-    background-color: #f56a2c;
-    color: white;
+    font-size: ${theme.fonts.size.P0};
+    background-color: ${theme.colors.primary};
+    color: ${theme.colors.white};
     
     cursor: pointer;
   }
 
   .icon-button {
-    color: white;
-    font-size: 15px;
+    color: ${theme.colors.white};
+    font-size: ${theme.fonts.size.P0};
   }
 
   &:hover {
-    background-color: white;
+    background-color: ${theme.colors.white};
 
     button {
-      color: #f56a2c;
-      background-color: white;
+      color: ${theme.colors.primary};
+      background-color: ${theme.colors.white};
     }
 
     .icon-button {
-      color: #f56a2c;
-      background-color: white;
+      color: ${theme.colors.primary};
+      background-color: ${theme.colors.white};
     }
   }
 
