@@ -11,13 +11,14 @@ export default function Logo() {
   );
 }
 const LogoStyled = styled.div`
-
   display: flex;
   align-items: center;
+  transform: scale(2.5);
+
 
   h1 {
     font-family: "Amatic SC", cursive;
-    font-size: 75px;
+    font-size: 36px;
     font-weight: 700;
     line-height: 1em;
     text-transform: uppercase;
@@ -29,8 +30,8 @@ const LogoStyled = styled.div`
   img{
     object-fit: contain;
     object-position: center;
-    height: 75px;
-    width: 75px;
+    height: 50px;
+    width: 80px;
     margin: 0 5px;
 
   }
