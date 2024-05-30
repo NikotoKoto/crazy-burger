@@ -2,9 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import LogoImg from "../pages/login/assetsLogin/logo-orange.png"
 import { theme } from "../../theme";
-export default function Logo({className, ...restProps}) {
+export default function Logo({className,onClick, ...restProps}) {
   return (
-    <LogoStyled className={className} onClick={()=>window.location.reload()}>
+    <LogoStyled className={className} onClick={onClick}>
       <h1>CRAZEE</h1>
       <img src={LogoImg} alt="logo_CrazeeBurger"/>
       <h1> BURGER</h1>
@@ -14,7 +14,7 @@ export default function Logo({className, ...restProps}) {
 const LogoStyled = styled.div`
   display: flex;
   align-items: center;
-  cursor: pointer;
+
 
 
   h1 {
