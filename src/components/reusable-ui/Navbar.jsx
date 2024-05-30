@@ -1,10 +1,9 @@
 import {  useParams } from 'react-router-dom'
 import styled from 'styled-components'
 import RightSide from './navbarContent/RightSide'
-import LeftSide from './navbarContent/LeftSide'
 import { FaRegUserCircle } from "react-icons/fa";
 import { theme } from '../../theme';
-
+import Logo from "../reusable-ui/Logo";
 export default function Navbar() {
 
   //state
@@ -14,7 +13,7 @@ export default function Navbar() {
   //render
   return (
     <NavbarStyled>
-      <LeftSide/>
+      <Logo/>
       <RightSide
       IconNav={<FaRegUserCircle className='iconNav' />
     }/> 
