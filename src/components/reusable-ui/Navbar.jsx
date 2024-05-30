@@ -8,7 +8,7 @@ import { theme } from '../../theme';
 export default function Navbar() {
 
   //state
-  const { username } = useParams();
+  
   //comportement
 
   //render
@@ -16,7 +16,6 @@ export default function Navbar() {
     <NavbarStyled>
       <LeftSide/>
       <RightSide
-      username = {username}
       IconNav={<FaRegUserCircle className='iconNav' />
     }/> 
   </NavbarStyled>
@@ -31,6 +30,6 @@ const NavbarStyled = styled.div`
       justify-content: space-between;
       padding: 0 20px 0 20px;
       border-radius: ${theme.borderRadius.round} ${theme.borderRadius.round} 0 0;
-      box-shadow: 0 0 10px black
+      box-shadow: 0 0 5px ${theme.colors.greyDark}
     
 `

@@ -1,5 +1,3 @@
-import React from "react";
-import { useParams } from "react-router-dom";
 import Navbar from "../../reusable-ui/Navbar";
 import styled from "styled-components";
 import Main from "../../reusable-ui/Main";
