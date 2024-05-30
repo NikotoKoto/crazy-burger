@@ -1,11 +1,13 @@
 import React from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Navbar from "../../reusable-ui/Navbar";
 import styled from "styled-components";
+import Main from "../../reusable-ui/Main";
+import { theme } from "../../../theme";
 
 export default function orderPage() {
   //state
-  const { username } = useParams();
+ 
 
   //comportement
 
@@ -13,15 +15,10 @@ export default function orderPage() {
   return (
     <OrderPageStyled>
       <div className="container">
-        <div className="navbar">
-          Navbar
-        <h1>Bienvenue {username}</h1>
-          <Link to="/">
-            <button>Deconnexion</button>
-          </Link>
+        <Navbar 
+         />
+        <Main/>
         </div>
-        <div className="main">Main</div>
-      </div>
     </OrderPageStyled>
   );
 }
@@ -34,21 +31,16 @@ display: flex;
 justify-content: center;
 align-items: center;
 
+
     .container{
     background-color: red;
     height: 95vh;
     width: 1400px;
     display: flex;
     flex-direction:column;
+    border-radius: ${theme.borderRadius.round};
 
-    .navbar{
-      background-color: blue;
-      height: 10vh;
-    }
-    .main{
-      background-color: green;
-      flex: 1; // permet d'utiliser toute la page de flex 
-    }
+    
     
   }
 `;
