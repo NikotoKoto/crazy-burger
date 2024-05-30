@@ -29,7 +29,7 @@ const NavbarStyled = styled.div`
       display: flex;
       justify-content: space-between;
       padding: 0 20px 0 20px;
-      border-radius: ${theme.borderRadius.round} ${theme.borderRadius.round} 0 0;
-      box-shadow: 0 0 5px ${theme.colors.greyDark}
+      border-radius: ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound} 0 0;
+
     
 `
