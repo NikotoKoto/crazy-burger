@@ -8,7 +8,6 @@ export default function RightSide({ username, IconNav, ...restProps }) {
     <RightSideStyled>
       <div className="rightSide1">
         <div className="hey">
-          {" "}
           Hey, <span>{username}</span>
         </div>
         <Link to="/">
