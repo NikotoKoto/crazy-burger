@@ -12,7 +12,7 @@ export default function RightSide({  IconNav, ...restProps }) {
   //render
   return (
     <RightSideStyled>
-      <div className="buttonAdmin">Button admin</div>
+      <button className="buttonAdmin">Button admin</button>
      <Profile
      username={username}/>
       {IconNav && IconNav}     
@@ -32,5 +32,16 @@ const RightSideStyled = styled.div`
     width: 40px;
     height: 40px;
     color: ${theme.colors.greyMedium};
+  }
+
+  .buttonAdmin{
+    padding: 10px 40px;
+    border-radius: 25px;
+    background-color: purple;
+    cursor: pointer;
+
+    &:active{
+      transform: scale(0.95);
+    }
   }
 `;
