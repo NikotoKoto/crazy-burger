@@ -1,8 +1,14 @@
+import styled from "styled-components"
 
 
 export default function Basket() {
   return (
-    <div className="basketMenu">toto</div>
+    <BasketStyled>toto</BasketStyled>
 
   )
 }
+
+
+const BasketStyled = styled.div`
+ 
+`

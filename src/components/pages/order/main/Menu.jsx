@@ -1,18 +1,24 @@
-
+import { useState } from "react";
 import styled from 'styled-components'
 import Cards from "../../../reusable-ui/Cards";
 import {fakeMenu2} from "../../../../fakeData/fakeMenu"
 export default function Menu() {
+
+  //state
+const [products, setProducts] = useState(fakeMenu2)
+  //comportement
+
+  //render
   return (
     <MenuStyled>
-        {fakeMenu2.map(
-          (fakeMenu) => (
+        {products.map(
+          (Menu) => (
             (
               <Cards
-                key={fakeMenu.id}
-                imageFood={fakeMenu.imageSource}
-                Title={fakeMenu.title}
-                Price={fakeMenu.price}
+                key={Menu.id}
+                imageFood={Menu.imageSource}
+                Title={Menu.title}
+                Price={Menu.price}
               />
             )
           )
@@ -26,9 +32,10 @@ export default function Menu() {
 const MenuStyled = styled.div`
     display: grid;
     width: 100%;
-    gap: 20px;
+    grid-column-gap: 20px;
+    grid-row-gap: 60px;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(4, 1fr);
-    margin-left: 75px;
+    justify-items: center;
   
 `

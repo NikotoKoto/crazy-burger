@@ -17,13 +17,15 @@ const MainStyled = styled.div`
   box-shadow: 0 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
   padding-top: 25px;
   display: grid;
-  grid-template-columns: 25% 75%;
+  /*Prepare for basket
+  grid-template-columns: 25% 1fr;*/
+  grid-template-columns: 1fr;
   justify-content: center;
   align-items: center;
   flex-direction: row;
   flex: 1; // permet d'utiliser toute la page de flex
   border-radius: 0 0 ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
-  overflow-y:auto;
+  overflow:scroll;
 
 
   .basketMenu {
