@@ -1,7 +1,7 @@
-import Navbar from "../../reusable-ui/Navbar";
+import Navbar from "./navbar/Navbar";
 import styled from "styled-components";
-import Main from "../../reusable-ui/Main";
 import { theme } from "../../../theme";
+import Main from "./main/Main";
 
 export default function orderPage() {
   //state

@@ -1,10 +1,9 @@
-import {  useParams } from 'react-router-dom'
 import styled from 'styled-components'
-import RightSide from './navbarContent/RightSide'
 import { FaRegUserCircle } from "react-icons/fa";
-import { theme } from '../../theme';
-import Logo from "../reusable-ui/Logo";
-import { refreshPage } from '../../utils/window';
+import Logo from "../../../reusable-ui/Logo";
+import { refreshPage } from '../../../../utils/window';
+import RightSide from './RightSide';
+import { theme } from '../../../../theme';
 export default function Navbar() {
 
   //state

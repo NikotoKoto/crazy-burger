@@ -1,8 +1,7 @@
-import React from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
-import { theme } from "../../../theme";
 import Profile from "./Profile";
+import { theme } from "../../../../theme";
 
 export default function RightSide({  IconNav, ...restProps }) {
   //state

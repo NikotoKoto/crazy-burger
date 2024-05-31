@@ -1,7 +1,6 @@
-import React from "react";
 import styled from "styled-components";
-import { theme } from "../../../theme";
 import { Link } from "react-router-dom";
+import { theme } from "../../../../theme";
 
 export default function Profile({ username, ...restProps }) {
   return (
