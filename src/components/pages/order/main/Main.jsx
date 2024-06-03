@@ -6,7 +6,7 @@ import Basket from "./Basket";
 export default function Main() {
   return (
     <MainStyled>
-      <Basket/>
+      <Basket />
       <Menu />
     </MainStyled>
   );
@@ -25,12 +25,17 @@ const MainStyled = styled.div`
   flex-direction: row;
   flex: 1; // permet d'utiliser toute la page de flex
   border-radius: 0 0 ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
-  overflow:scroll;
+  overflow: scroll;
 
-
-  .basketMenu {
-    
-    background-color: blue;
+  //Cacher la scrollbar pour tous les navigateurs
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
   }
- 
-`
+
+  /* cacher la scrollbar pour IE, Edge et Firefox */
+  -ms-overflow-style: none; /* IE et Edge */
+  scrollbar-width: none; /* Firefox */
+
+  
+`;

@@ -5,7 +5,7 @@ import {fakeMenu2} from "../../../../fakeData/fakeMenu"
 export default function Menu() {
 
   //state
-const [products, setProducts] = useState(fakeMenu2)
+const [products] = useState(fakeMenu2)
   //comportement
 
   //render
@@ -19,6 +19,7 @@ const [products, setProducts] = useState(fakeMenu2)
                 imageFood={Menu.imageSource}
                 Title={Menu.title}
                 Price={Menu.price}
+                foodAltImg={Menu.title}
               />
             )
           )

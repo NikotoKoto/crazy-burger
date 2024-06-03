@@ -10,5 +10,7 @@ export default function Basket() {
 
 
 const BasketStyled = styled.div`
- 
+    background-color: blue;
+    z-index: 1;
+  
 `

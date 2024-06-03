@@ -17,7 +17,7 @@ export default function Cards({
 
       <div className="infoText">
         <p className="titleCard">{Title}</p>
-        <div className="toto">
+        <div className="description">
           <p>{Price} €</p>
           <Button label="Ajouter" className="styledButton" />
         </div>
@@ -56,7 +56,7 @@ const CardStyled = styled.div`
       font-family: "Amatic SC", cursive;
     }
 
-    .toto{
+    .description{
         display: flex;
         align-items: center;
         justify-content: space-between;
