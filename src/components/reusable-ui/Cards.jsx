@@ -9,6 +9,12 @@ export default function Cards({
   Price,
   ...restProps
 }) {
+
+  //State
+
+  //comportement
+
+  //render
   return (
     <CardStyled>
       <div className="imgFood">
@@ -30,8 +36,8 @@ const CardStyled = styled.div`
   height: 330px;
   border-radius: 15px;
   box-shadow: -8px 8px 20px 0px #00000033;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 65% 1fr;
 
   .imgFood {
     display: flex;
@@ -39,18 +45,25 @@ const CardStyled = styled.div`
     justify-content: center;
     height: 200px; /* Définissez une hauteur fixe pour vos images */
 
-    transform: scale(0.6);
+   
 
     img {
       height: 100%;
+      width: 100%;
+      object-fit: contain;
     }
   }
 
   .infoText {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    overflow: hidden;
+    width: 100%;
+    grid-template-rows: 40% 1fr;
     .titleCard {
         padding-left: 10px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       font-size: ${theme.fonts.size.P4};
       font-weight: ${theme.fonts.weights.bold};
       font-family: "Amatic SC", cursive;
