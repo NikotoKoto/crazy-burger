@@ -6,7 +6,7 @@ export default function Cards({
   imageFood,
   foodAltImg,
   Title,
-  Price,
+  leftDescription,
   ...restProps
 }) {
 
@@ -24,7 +24,7 @@ export default function Cards({
       <div className="infoText">
         <p className="titleCard">{Title}</p>
         <div className="description">
-          <p>{Price} €</p>
+          <div className="leftDescription">{leftDescription}</div>
           <Button label="Ajouter" className="styledButton" />
         </div>
       </div>
@@ -75,12 +75,14 @@ const CardStyled = styled.div`
         justify-content: space-between;
         padding: 0 15px 0 15px;
 
-        p{
+        .leftDescription{
             font-size: ${theme.fonts.size.P0};
             font-weight: ${theme.fonts.weights.regular};
             color: ${theme.colors.primary};
         }
     }
+
+    
 
 
     .styledButton {
