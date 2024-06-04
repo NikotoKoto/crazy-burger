@@ -16,7 +16,7 @@ export default function RightSide({  IconNav, ...restProps }) {
       labelIfChecked="Activer le mode Admin"/>
      <Profile
      username={username}/>
-      {IconNav && IconNav}     
+      {IconNav && IconNav}  
     </RightSideStyled>
   );
 }
