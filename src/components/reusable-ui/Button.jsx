@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { theme } from "../../theme";
 
-export default function Button({IconButton,label, ...restProps}) {
+export default function Button({ IconButton, label, className, ...restProps }) {
   return (
-    <ButtonStyled>
+    <ButtonStyled className={className}>
       <button {...restProps}>{label}</button>
       {IconButton && IconButton}
     </ButtonStyled>
@@ -27,7 +27,6 @@ const ButtonStyled = styled.button`
     font-size: ${theme.fonts.size.P0};
     background-color: ${theme.colors.primary};
     color: ${theme.colors.white};
-    
     cursor: pointer;
   }
 
@@ -38,10 +37,11 @@ const ButtonStyled = styled.button`
 
   &:hover {
     background-color: ${theme.colors.white};
-
+    
     button {
       color: ${theme.colors.primary};
       background-color: ${theme.colors.white};
+      
     }
 
     .icon-button {
