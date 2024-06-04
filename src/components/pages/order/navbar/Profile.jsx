@@ -20,6 +20,7 @@ const ProfileStyled = styled.div`
   color: ${theme.colors.greyBlue};
   display: flex;
   flex-direction: column;
+  padding-left: 50px;
 
   span {
     font-size: ${theme.fonts.size.P0};
