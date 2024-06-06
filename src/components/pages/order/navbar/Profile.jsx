@@ -26,7 +26,7 @@ const ProfileStyled = styled.div`
     font-size: ${theme.fonts.size.P0};
     font-weight: ${theme.fonts.weights.bold};
     color: ${theme.colors.primary};
-  }
+      }
 
   a {
     position: relative;
