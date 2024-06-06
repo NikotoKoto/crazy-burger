@@ -30,8 +30,8 @@ export default function RightSide({ IconNav, ...restProps }) {
   return (
     <RightSideStyled className="toggle-button">
       <ToggleButton
-        labelIfUnchecked="Désactiver le mode Admin"
-        labelIfChecked="Activer le mode Admin"
+        labelIfUnchecked="Activer le mode Admin"
+        labelIfChecked="Désactiver le mode Admin"
         onToggle={displayToastNotification}
       />
       <Profile username={username} />
