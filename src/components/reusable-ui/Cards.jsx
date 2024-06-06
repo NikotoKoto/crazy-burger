@@ -76,7 +76,7 @@ const CardStyled = styled.div`
         padding: 0 15px 0 15px;
 
         .leftDescription{
-            font-size: ${theme.fonts.size.P0};
+            font-size: ${theme.fonts.size.SM};
             font-weight: ${theme.fonts.weights.regular};
             color: ${theme.colors.primary};
         }

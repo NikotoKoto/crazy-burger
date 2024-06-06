@@ -24,7 +24,7 @@ const ButtonStyled = styled.button`
 
   button {
     border: none;
-    font-size: ${theme.fonts.size.P0};
+    font-size: ${theme.fonts.size.SM};
     background-color: ${theme.colors.primary};
     color: ${theme.colors.white};
     cursor: pointer;
@@ -32,7 +32,7 @@ const ButtonStyled = styled.button`
 
   .icon-button {
     color: ${theme.colors.white};
-    font-size: ${theme.fonts.size.P0};
+    font-size: ${theme.fonts.size.SM};
   }
 
   &:hover {

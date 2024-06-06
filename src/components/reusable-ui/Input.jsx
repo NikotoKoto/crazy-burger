@@ -32,14 +32,14 @@ const InputStyled = styled.div`
     margin: 18px 0;
 
     .icon-login {
-      font-size: ${theme.fonts.size.P0};
+      font-size: ${theme.fonts.size.SM};
       margin-right: 8px;
       color: ${theme.colors.greyMedium};
     }
 
     input {
       border: none;
-      font-size: ${theme.fonts.size.P0};
+      font-size: ${theme.fonts.size.SM};
       color: ${theme.colors.dark};
       width: 100%;
       outline: none; // enleve la bordure quand on clique dessus

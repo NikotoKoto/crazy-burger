@@ -16,14 +16,14 @@ export default function Profile({ username, ...restProps }) {
 }
 
 const ProfileStyled = styled.div`
-  font-size: ${theme.fonts.size.P0};
+  font-size: ${theme.fonts.size.SM};
   color: ${theme.colors.greyBlue};
   display: flex;
   flex-direction: column;
   padding-left: 50px;
 
   span {
-    font-size: ${theme.fonts.size.P0};
+    font-size: ${theme.fonts.size.SM};
     font-weight: ${theme.fonts.weights.bold};
     color: ${theme.colors.primary};
       }
