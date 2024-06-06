@@ -2,45 +2,52 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import Profile from "./Profile";
 import { theme } from "../../../../theme";
-
-export default function RightSide({  IconNav, ...restProps }) {
+import ToggleButton from "../../../reusable-ui/ToggleButton";
+import { useState } from "react";
+import ToastAdmin from "./ToastAdmin";
+import { toast } from "react-toastify";
+export default function RightSide({ IconNav, ...restProps }) {
   //state
   const { username } = useParams();
+  const [isModeAdmin, setisModeAdmin] = useState(false);
   //comportement
-
+  const displayToastNotification = () => {
+    if (!isModeAdmin) {
+      toast.info("Mode admin activé", {
+        theme: "dark",
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
+    }
+    setisModeAdmin(!isModeAdmin);
+  };
   //render
   return (
-    <RightSideStyled>
-      <button className="buttonAdmin">Button admin</button>
-     <Profile
-     username={username}/>
-      {IconNav && IconNav}     
+    <RightSideStyled className="toggle-button">
+      <ToggleButton
+        labelIfUnchecked="Activer le mode Admin"
+        labelIfChecked="Désactiver le mode Admin"
+        onToggle={displayToastNotification}
+      />
+      <Profile username={username} />
+      {IconNav && IconNav}
+      <ToastAdmin />
     </RightSideStyled>
   );
 }
 
 const RightSideStyled = styled.div`
-  background-color: #fff;
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: 10px;
-  padding: 0 50px 0 0;
 
-   .iconNav {
+  .iconNav {
     width: 40px;
     height: 40px;
     color: ${theme.colors.greyMedium};
-  }
-
-  .buttonAdmin{
-    padding: 10px 40px;
-    border-radius: 25px;
-    background-color: purple;
-    cursor: pointer;
-
-    &:active{
-      transform: scale(0.95);
-    }
   }
 `;
