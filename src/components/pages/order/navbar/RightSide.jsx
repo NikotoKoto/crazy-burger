@@ -3,14 +3,15 @@ import styled from "styled-components";
 import Profile from "./Profile";
 import { theme } from "../../../../theme";
 import ToggleButton from "../../../reusable-ui/ToggleButton";
-import { useState } from "react";
+import { useContext } from "react";
 import ToastAdmin from "./ToastAdmin";
 import { toast } from "react-toastify";
 import AdminPanel from "../admin/AdminPanel"
+import OrderContext from "../../../../context/OrderContext";
 export default function RightSide({ IconNav, ...restProps }) {
   //state
   const { username } = useParams();
-  const [isModeAdmin, setisModeAdmin] = useState(false);
+ const {isModeAdmin, setisModeAdmin} = useContext(OrderContext)
   //comportement
   const displayToastNotification = () => {
     if (!isModeAdmin) {
@@ -39,6 +40,7 @@ export default function RightSide({ IconNav, ...restProps }) {
         labelIfUnchecked="Activer le mode Admin"
         labelIfChecked="Désactiver le mode Admin"
         onToggle={displayToastNotification}
+        isChecked={isModeAdmin}
              />
       <Profile username={username} />
       {IconNav && IconNav}
