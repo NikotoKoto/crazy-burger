@@ -23,16 +23,16 @@ export default function Admin() {
 
 const AdminPanelStyled = styled.div`
 position: absolute;
-background-color: white;
+background-color: ${theme.colors.white};
 border-radius: 0 0 ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
-
+border: 1px solid ${theme.colors.greyLight};
   bottom: 0;
   left: 0;
   right: 0;
   width: 100%;
   height: 250px;
+  box-shadow: ${theme.shadows.subtle};
 
-  border: 1px solid black;
 
   .premier{
     width: 60px;
