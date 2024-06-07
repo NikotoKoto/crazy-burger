@@ -2,12 +2,17 @@ import styled from "styled-components";
 import { theme } from "../../../../theme";
 import Menu from "./Menu";
 import Basket from "./Basket";
+import Admin from "../admin/AdminPanel";
 
 export default function Main() {
   return (
     <MainStyled>
-      <Basket />
+      {/* <Basket /> */}
+      <div className="menu-and-admin">
       <Menu />
+      <Admin/>
+      </div>
+      
     </MainStyled>
   );
 }
@@ -15,15 +20,9 @@ export default function Main() {
 const MainStyled = styled.div`
   background-color: ${theme.colors.white};
   box-shadow: 0 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
-  padding-top: 25px;
   display: grid;
-  /*Prepare for basket
-  grid-template-columns: 25% 1fr;*/
   grid-template-columns: 1fr;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
-  flex: 1; // permet d'utiliser toute la page de flex
+  height: calc(95vh - 10vh);
   border-radius: 0 0 ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound};
   overflow: scroll;
 
@@ -37,5 +36,11 @@ const MainStyled = styled.div`
   -ms-overflow-style: none; /* IE et Edge */
   scrollbar-width: none; /* Firefox */
 
-  
+
+  .menu-and-admin{
+    position: relative;
+    overflow-y: hidden;
+    display: grid;
+
+  }
 `;

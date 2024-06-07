@@ -6,6 +6,7 @@ import ToggleButton from "../../../reusable-ui/ToggleButton";
 import { useState } from "react";
 import ToastAdmin from "./ToastAdmin";
 import { toast } from "react-toastify";
+import AdminPanel from "../admin/AdminPanel"
 export default function RightSide({ IconNav, ...restProps }) {
   //state
   const { username } = useParams();
@@ -26,6 +27,11 @@ export default function RightSide({ IconNav, ...restProps }) {
     }
     setisModeAdmin(!isModeAdmin);
   };
+
+
+ 
+    
+  
   //render
   return (
     <RightSideStyled className="toggle-button">
@@ -33,10 +39,12 @@ export default function RightSide({ IconNav, ...restProps }) {
         labelIfUnchecked="Activer le mode Admin"
         labelIfChecked="Désactiver le mode Admin"
         onToggle={displayToastNotification}
-      />
+             />
       <Profile username={username} />
       {IconNav && IconNav}
       <ToastAdmin />
+          
+      
     </RightSideStyled>
   );
 }
