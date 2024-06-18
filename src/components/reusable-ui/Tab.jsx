@@ -9,9 +9,9 @@ export default function Tab({ className, Logo, label, onClick }) {
   //render
   return (
     <TabStyled  className={className} onClick={onClick}>
-      
-        <span className="logo">{Logo}</span>
         
+        <div className="logo">{Logo}</div>
+        {label && <span className="label">{label}</span>}
       
     </TabStyled>
   );
@@ -53,5 +53,8 @@ const TabStyled = styled.button`
       display: flex;
     }
 
+    .label{
+      margin-left: 13px;
+    }
   
 `;
