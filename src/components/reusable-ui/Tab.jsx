@@ -28,7 +28,8 @@ const TabStyled = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-
+  
+//fonts
   font-size: ${theme.fonts.size.P0};
   color: ${theme.colors.greySemiDark};
 
@@ -37,7 +38,7 @@ const TabStyled = styled.button`
   background: ${theme.colors.background_white};
   box-shadow: 0px -6px 8px -2px #0000001A;
 
-
+//border
   border-width: 1px 1px 2px 1px;
   border-style: solid;
   border-color: ${theme.colors.greyLight};
