@@ -3,6 +3,7 @@ import Tab from "../../../reusable-ui/Tab";
 import { IoChevronDownSharp, IoChevronUp } from "react-icons/io5";
 import { theme } from "../../../../theme";
 import { AiOutlinePlus } from "react-icons/ai";
+import { FaPen } from "react-icons/fa";
 
 export default function AdminTab({ isCollapsed, setIsCollapsed }) {
   //state
@@ -24,6 +25,11 @@ export default function AdminTab({ isCollapsed, setIsCollapsed }) {
         className={isCollapsed ? "is-actived" : ""}
         Logo={<AiOutlinePlus />}
         label="Veuillez ajouter un produit"
+      ></Tab>
+      <Tab
+        className={isCollapsed ? "is-actived" : ""}
+        Logo={<FaPen />}
+        label="Modifier un produit"
       ></Tab>
     </AdminTabStyled>
   );
