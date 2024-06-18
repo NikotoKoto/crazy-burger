@@ -1,44 +1,55 @@
-import Navbar from "./navbar/Navbar";
-import styled from "styled-components";
-import { theme } from "../../../theme";
-import Main from "./main/Main";
-import OrderContext from "../../../context/OrderContext";
-import { useState } from "react";
+import { useState } from "react"
+import { useParams } from "react-router-dom"
+import styled from "styled-components"
+import { theme } from "../../../theme"
+import Main from "./main/Main"
+import Navbar from "./navbar/Navbar"
+import OrderContext from "../../../context/OrderContext"
 
-export default function orderPage() {
-  //state
-  const [isModeAdmin, setisModeAdmin] = useState(false);
+export default function OrderPage() {
+  // state
+  const { username } = useParams()
+  const [isModeAdmin, setIsModeAdmin] = useState(false)
+  const [isCollapsed, setIsCollapsed] = useState(false)
+  const [currentTabSelected, setCurrentTabSelected] = useState("add")
 
-  //comportement
+  // comportements
+
   const orderContextValue = {
     isModeAdmin,
-    setisModeAdmin,
-  };
-  //render
+    setIsModeAdmin,
+    isCollapsed,
+    setIsCollapsed,
+    currentTabSelected,
+    setCurrentTabSelected,
+  }
+
+  //affichage
   return (
     <OrderContext.Provider value={orderContextValue}>
       <OrderPageStyled>
         <div className="container">
-          <Navbar />
+          <Navbar username={username} />
           <Main />
         </div>
       </OrderPageStyled>
     </OrderContext.Provider>
-  );
+  )
 }
 
 const OrderPageStyled = styled.div`
-  background-color: ${theme.colors.primary};
+  background: ${theme.colors.primary};
   height: 100vh;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 
   .container {
+    background: red;
     height: 95vh;
     width: 1400px;
     display: flex;
     flex-direction: column;
-    border-radius: ${theme.borderRadius.round};
+    border-radius: ${theme.borderRadius.extraRound};
   }
-`;
+`

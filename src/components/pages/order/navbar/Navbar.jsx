@@ -1,39 +1,31 @@
-import styled from 'styled-components'
-import { FaRegUserCircle } from "react-icons/fa";
-import Logo from "../../../reusable-ui/Logo";
-import { refreshPage } from '../../../../utils/window';
-import RightSide from './RightSide';
-import { theme } from '../../../../theme';
-export default function Navbar() {
+import styled from "styled-components"
+import NavbarRightSide from "./NavbarRightSide"
+import Logo from "../../../reusable-ui/Logo"
+import { theme } from "../../../../theme"
+import { refreshPage } from "../../../../utils/window"
 
-  //state
-  
-  //comportement
-
-  //render
+export default function Navbar({ username }) {
   return (
     <NavbarStyled>
-      <Logo
-      // Appel de l'util refreshPage
-      onClick={refreshPage}
-      className="logoNavbar"/>
-      <RightSide
-      IconNav={<FaRegUserCircle className='iconNav' />
-    }/> 
-  </NavbarStyled>
+      <Logo className="logo-order-page" onClick={() => refreshPage()} />
+      <NavbarRightSide username={username} />
+    </NavbarStyled>
   )
 }
 
-const NavbarStyled = styled.div`
+const NavbarStyled = styled.nav`
+  background: ${theme.colors.white};
+  height: 10vh;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
 
-      background-color: #fff;
-      height: 10vh;
-      display: flex;
-      justify-content: space-between;
-      padding: 0 20px 0 20px;
-      border-radius: ${theme.borderRadius.extraRound} ${theme.borderRadius.extraRound} 0 0;
+  border-top-left-radius: ${theme.borderRadius.extraRound};
+  border-top-right-radius: ${theme.borderRadius.extraRound};
+  border-bottom: 1px solid ${theme.colors.greyLight};
+  /* align-items: center; */
 
-    .logoNavbar{
-      cursor: pointer;
-    }
+  .logo-order-page {
+    cursor: pointer;
+  }
 `
