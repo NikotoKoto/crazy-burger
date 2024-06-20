@@ -35,7 +35,7 @@ const CardStyled = styled.div`
   width: 240px;
   height: 330px;
   border-radius: 15px;
-  box-shadow: -8px 8px 20px 0px #00000033;
+  box-shadow:${theme.shadows.medium};
   display: grid;
   grid-template-rows: 65% 1fr;
 

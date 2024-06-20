@@ -33,7 +33,7 @@ const MenuStyled = styled.div`
   grid-row-gap: 60px;
   padding: 50px 50px 50px;
   justify-items: center;
-  box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
+  box-shadow: ${theme.shadows.strong};
   overflow-y: scroll;
 
   //Cacher la scrollbar pour tous les navigateurs
