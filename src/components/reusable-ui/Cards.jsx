@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import Button from "./Button";
 import { theme } from "../../theme";
+import { ImCross } from "react-icons/im";
+import OrderContext from "../../context/OrderContext";
 export default function Cards({
   imageFood,
   foodAltImg,
@@ -11,12 +13,14 @@ export default function Cards({
 }) {
 
   //State
-
+  const { isModeAdmin } = useContext(OrderContext)
   //comportement
 
   //render
   return (
     <CardStyled>
+      {isModeAdmin && <button className="cross"><ImCross />
+      </button>}
       <div className="imgFood">
         <img src={imageFood} alt={foodAltImg} />
       </div>
@@ -37,7 +41,38 @@ const CardStyled = styled.div`
   border-radius: 15px;
   box-shadow:${theme.shadows.medium};
   display: grid;
+  position: relative;
   grid-template-rows: 65% 1fr;
+
+  .cross{
+    position: absolute;
+    display: flex;
+    height: 20px;
+    width: 20px;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+
+    justify-content: center;
+    align-items: center;
+    
+    border-radius: 10px;
+    font-size: 10px;
+    border: none;
+
+
+    color: white;
+    background-color: ${theme.colors.primary};
+
+    &:hover{
+      background-color: red;
+      transform: scale(1.15);
+    }
+
+    &:active{
+      transform: scale(0.95);
+    }
+  }
 
   .imgFood {
     display: flex;
