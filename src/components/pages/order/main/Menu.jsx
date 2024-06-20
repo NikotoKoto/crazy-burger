@@ -1,12 +1,12 @@
 import { useState } from "react";
 import styled from "styled-components";
 import Cards from "../../../reusable-ui/Cards";
-import { fakeMenu2 } from "../../../../fakeData/fakeMenu";
+import { fakeMenu } from "../../../../fakeData/fakeMenu";
 import { formatPrice } from "../../../../utils/math";
 import { theme } from "../../../../theme";
 export default function Menu() {
   //state
-  const [menu] = useState(fakeMenu2);
+  const [menu] = useState(fakeMenu.LARGE);
   //comportement
 
   //render
