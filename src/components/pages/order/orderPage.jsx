@@ -13,7 +13,7 @@ export default function OrderPage() {
   const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
-  const [menu, setMenu] = useState(fakeMenu.LARGE);
+  const [menu, setMenu] = useState(fakeMenu.EMPTY);
   const [imageSource, setImageSource] = useState("");
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");

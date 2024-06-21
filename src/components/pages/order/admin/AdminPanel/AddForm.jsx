@@ -2,7 +2,7 @@ import InputFields from "../../../../reusable-ui/inputFields";
 import styled from "styled-components";
 import { useContext} from "react";
 import { PiHamburgerLight } from "react-icons/pi";
-import { FaCameraRetro } from "react-icons/fa";
+import { FaCameraRetro, FaRegCheckCircle } from "react-icons/fa";
 import { LuEuro } from "react-icons/lu";
 import { theme } from "../../../../../theme";
 
@@ -62,7 +62,8 @@ export default function AddForm() {
 
         <div className="add">
           <button className="buttonAdd">Ajouter un nouveau produit</button>
-          {addSuccess && <p>Ajouté avec succès</p>}
+          {addSuccess && <div className="check"><FaRegCheckCircle  /> 
+            <span>Ajouté avec succès</span></div>}
         </div>
       </div>
     </AddFormStyled>
@@ -111,12 +112,20 @@ const AddFormStyled = styled.form`
         transform: scale(0.95);
       }
     }
-    p {
+    .check {
       color: #60bd4f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-left: 25px;
       animation-name: disapear;
       animation-duration: 2s;
       animation-timing-function: ease;
       animation-iteration-count: inherit;
+      
+      span{
+        padding-left: 15px;
+      }
     }
 
     @keyframes disapear {
