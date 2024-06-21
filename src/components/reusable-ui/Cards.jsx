@@ -1,19 +1,22 @@
-import React, { useContext } from "react";
 import styled from "styled-components";
 import Button from "./Button";
 import { theme } from "../../theme";
 import { ImCross } from "react-icons/im";
-import OrderContext from "../../context/OrderContext";
+
+
 export default function Cards({
+  id,
   imageFood,
   foodAltImg,
   Title,
   leftDescription,
+  isModeAdmin,
   ...restProps
 }) {
 
   //State
-  const { isModeAdmin } = useContext(OrderContext)
+
+
   //comportement
 
   //render

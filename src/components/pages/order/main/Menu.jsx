@@ -1,16 +1,19 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import styled from "styled-components";
 import Cards from "../../../reusable-ui/Cards";
-import { fakeMenu } from "../../../../fakeData/fakeMenu";
+
 import { formatPrice } from "../../../../utils/math";
 import { theme } from "../../../../theme";
 import OrderContext from "../../../../context/OrderContext";
 import Button from "../../../reusable-ui/Button";
 export default function Menu() {
   //state
-  const [menu] = useState(fakeMenu.LARGE);
-  const { isModeAdmin } = useContext(OrderContext)
+
+  const { isModeAdmin, menu } = useContext(OrderContext)
+
+ 
   //comportement
+
 
   //render
   return (
@@ -32,13 +35,16 @@ export default function Menu() {
         </div>)
        ):
       (
+        
       menu.map(({ id, title, imageSource, price }) => (
+        
         <Cards
           key={id}
           imageFood={imageSource}
           Title={title}
           leftDescription={formatPrice(price)}
           foodAltImg={title}
+          isModeAdmin={isModeAdmin}
         />
       )))}
     </MenuStyled>

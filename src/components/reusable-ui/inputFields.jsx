@@ -26,7 +26,10 @@ const InputFieldsStyled = styled.div`
     width: 645px;
     height: 35px;
 
-    display: flex;
+    grid-area: 1/2/4/-1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
     align-items: center;
     justify-content: center;
     padding-left: 15px;
@@ -34,6 +37,7 @@ const InputFieldsStyled = styled.div`
     margin-bottom: 5px;
 
     input{
+        
         margin-left: 15px;
         width: 577px;
         height: 19px;
@@ -50,6 +54,9 @@ const InputFieldsStyled = styled.div`
         width: 15px;
         height: 13px;
         color: #747B91;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
 `
