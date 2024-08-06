@@ -13,37 +13,31 @@ export default function OrderPage() {
   const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("add");
-  const [menu, setMenu] = useState(fakeMenu.EMPTY);
-  const [imageSource, setImageSource] = useState("");
-  const [title, setTitle] = useState("");
-  const [price, setPrice] = useState("");
+  const [menu, setMenu] = useState(fakeMenu.LARGE);
   const [addSuccess, setAddSuccess] = useState(false);
+ 
 
-  const newItem = {
-    id: menu.length + 1,
-    imageSource: imageSource,
-    title: title,
-    price: price,
-    quantity: 0,
-    isAvailable: true,
-    isAdvertised: false,
-  };
 
 
   // comportements
 
-  const handleAddProduct = (event) => {
-    event.preventDefault();
+
+
+  const handleDelete = (id) => {
+    const deleteProduct = menu.filter(item => item.id != id)
+    setMenu(deleteProduct)
+  }
+  
+  const handleAddProduct = (newProductToAdd) => {
+     
     const copyMenu = [...menu];
-    const updateMenu = [newItem, ...copyMenu];
+    const updateMenu = [newProductToAdd, ...copyMenu];
     setMenu(updateMenu);
-    setTitle("");
-    setImageSource("");
-    setPrice("");
     setAddSuccess(true);
     setTimeout(() => setAddSuccess(false), 2000);
   };
 
+  
   const orderContextValue = {
     isModeAdmin,
     setIsModeAdmin,
@@ -52,17 +46,10 @@ export default function OrderPage() {
     currentTabSelected,
     setCurrentTabSelected,
     menu,
-    setMenu,
     handleAddProduct,
-    title,
-    setTitle,
-    price,
-    setPrice,
-    imageSource,
-    setImageSource,
     addSuccess,
     setAddSuccess,
-    newItem,
+    handleDelete,
   };
 
   //affichage

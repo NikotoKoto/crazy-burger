@@ -9,11 +9,11 @@ import Button from "../../../reusable-ui/Button";
 export default function Menu() {
   //state
 
-  const { isModeAdmin, menu } = useContext(OrderContext)
+  const { isModeAdmin, menu, handleDelete } = useContext(OrderContext)
 
  
   //comportement
-
+ 
 
   //render
   return (
@@ -40,12 +40,13 @@ export default function Menu() {
         
         <Cards
           key={id}
-          imageFood={imageSource}
+          imageFood={imageSource === "" ? "/image/coming-soon.png" : imageSource}
           Title={title}
           leftDescription={formatPrice(price)}
           foodAltImg={title}
-          isModeAdmin={isModeAdmin}
-        />
+          isModeAdmin={isModeAdmin} 
+          handleDelete={handleDelete}       
+          />
       )))}
     </MenuStyled>
   );

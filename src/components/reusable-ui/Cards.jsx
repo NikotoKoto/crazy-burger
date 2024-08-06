@@ -4,6 +4,7 @@ import { theme } from "../../theme";
 import { ImCross } from "react-icons/im";
 
 
+
 export default function Cards({
   id,
   imageFood,
@@ -11,6 +12,8 @@ export default function Cards({
   Title,
   leftDescription,
   isModeAdmin,
+  onClick,
+  handleDelete,
   ...restProps
 }) {
 
@@ -22,7 +25,7 @@ export default function Cards({
   //render
   return (
     <CardStyled>
-      {isModeAdmin && <button className="cross"><ImCross />
+      {isModeAdmin && <button onClick ={() => handleDelete(id)} className="cross"><ImCross />
       </button>}
       <div className="imgFood">
         <img src={imageFood} alt={foodAltImg} />

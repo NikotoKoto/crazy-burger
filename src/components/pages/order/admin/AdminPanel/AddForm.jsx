@@ -1,69 +1,85 @@
 import InputFields from "../../../../reusable-ui/inputFields";
 import styled from "styled-components";
-import { useContext} from "react";
+import { useContext } from "react";
 import { PiHamburgerLight } from "react-icons/pi";
 import { FaCameraRetro, FaRegCheckCircle } from "react-icons/fa";
 import { LuEuro } from "react-icons/lu";
 import { theme } from "../../../../../theme";
-
 import OrderContext from "../../../../../context/OrderContext";
+import { useState } from "react";
 
+const EmptyProduct = {
+  id: "",
+  title: "",
+  imageSource: "",
+  price: 0,
+};
 export default function AddForm() {
   //state
- 
-  const { handleAddProduct,addSuccess, price, setPrice, title, setTitle,imageSource,setImageSource } = useContext(OrderContext)
 
+  const { handleAddProduct, addSuccess } = useContext(OrderContext);
 
- 
+  const [newProduct, setNewProduct] = useState(EmptyProduct);
 
   //comportement
-  const handleChangeName = (event) => {
-    setTitle(event.target.value);
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    const newProductToAdd = {
+      ...newProduct,
+      id: crypto.randomUUID(),
+    };
+    handleAddProduct(newProductToAdd);
   };
-  const handleChangeUrl = (event) => {
-    setImageSource(event.target.value);
-  };
-  const handleChangePrix = (event) => {
-    setPrice(event.target.value);
+  const handleChange = (event) => {
+    const {name, value} = event.target
+    console.log("regarde ici", event.target.value)
+    setNewProduct({ ...newProduct, [name]: value });
   };
 
-  
-
-  
-
- 
   //render
   return (
-    <AddFormStyled action="submmit" onSubmit={handleAddProduct}>
+    <AddFormStyled action="submmit" onSubmit={handleSubmit}>
       <div className="realImage">
-        {imageSource.length != 0 ? <img src={imageSource} /> : <p>Aucune Image</p>}
+        {newProduct.imageSource.length != 0 ? (
+          <img src={newProduct.imageSource} />
+        ) : (
+          <p>Aucune Image</p>
+        )}
       </div>
       <div>
         <InputFields
-          value={title}
+          name = "title"
+          value={newProduct.title}
           placeholder="Nom du produit"
           Icon={<PiHamburgerLight />}
-          onChange={handleChangeName}
+          onChange={handleChange}
         />
 
         <InputFields
-          value={imageSource}
-          placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)t"
+          name = "imageSource"
+          alt ={newProduct.imageSource}
+          value={newProduct.imageSource}
+          placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
           Icon={<FaCameraRetro />}
-          onChange={handleChangeUrl}
+          onChange={handleChange}
         />
 
         <InputFields
-          value={price}
+          name ="price"
+          value={newProduct.price ? newProduct.price : ""}
           placeholder="Prix"
           Icon={<LuEuro />}
-          onChange={handleChangePrix}
+          onChange={handleChange}
         />
 
         <div className="add">
           <button className="buttonAdd">Ajouter un nouveau produit</button>
-          {addSuccess && <div className="check"><FaRegCheckCircle  /> 
-            <span>Ajouté avec succès</span></div>}
+          {addSuccess && (
+            <div className="check">
+              <FaRegCheckCircle />
+              <span>Ajouté avec succès</span>
+            </div>
+          )}
         </div>
       </div>
     </AddFormStyled>
@@ -97,7 +113,7 @@ const AddFormStyled = styled.form`
       display: grid;
       width: 50%;
       height: 30px;
-      grid-template-columns: ;
+      //grid-template-columns: ;
       justify-content: center;
       align-items: center;
       cursor: pointer;
@@ -122,8 +138,8 @@ const AddFormStyled = styled.form`
       animation-duration: 2s;
       animation-timing-function: ease;
       animation-iteration-count: inherit;
-      
-      span{
+
+      span {
         padding-left: 15px;
       }
     }

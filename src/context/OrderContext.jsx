@@ -16,15 +16,8 @@ export default createContext({
     handleAddProduct: () => {},
     setAddSuccess: () => {},
 
-    title: "",
-    setTitle:()=>{},
-
-    imageSource:"",
-    setImageSource: ()=> {},
-
-    price:"",
-    setPrice: () => {},
     
     newItem: [],
+    handleDelete: () => {},
 
 })
