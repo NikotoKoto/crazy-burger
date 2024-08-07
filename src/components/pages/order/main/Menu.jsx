@@ -7,16 +7,15 @@ import { theme } from "../../../../theme";
 import OrderContext from "../../../../context/OrderContext";
 import Button from "../../../reusable-ui/Button";
 
+
 const IMAGE_BY_DEFAULT = "/public/images/coming-soon.png"
 export default function Menu() {
+  const { isModeAdmin, menu, handleDelete,resetMenu} = useContext(OrderContext)
   //state
-
-  const { isModeAdmin, menu, handleDelete} = useContext(OrderContext)
-  
 
  
   //comportement
- 
+
 
   //render
   return (
@@ -29,6 +28,7 @@ export default function Menu() {
           <p> Clique ci-dessous pour le réinitialiser</p>
           <Button
           label="Générer de nouveau produits" 
+          onClick = {resetMenu}
           />
           </div>
         ):(
