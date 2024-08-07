@@ -8,8 +8,8 @@ import { theme } from "../../../../../theme";
 import OrderContext from "../../../../../context/OrderContext";
 import { useState } from "react";
 
-const EmptyProduct = {
-  id: "",
+const EMPTY_PRODUCT = {
+id: "",
   title: "",
   imageSource: "",
   price: 0,
@@ -19,7 +19,7 @@ export default function AddForm() {
 
   const { handleAddProduct, addSuccess } = useContext(OrderContext);
 
-  const [newProduct, setNewProduct] = useState(EmptyProduct);
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT);
 
   //comportement
   const handleSubmit = (event) => {
@@ -29,10 +29,10 @@ export default function AddForm() {
       id: crypto.randomUUID(),
     };
     handleAddProduct(newProductToAdd);
+    setNewProduct(EMPTY_PRODUCT)
   };
   const handleChange = (event) => {
     const {name, value} = event.target
-    console.log("regarde ici", event.target.value)
     setNewProduct({ ...newProduct, [name]: value });
   };
 
@@ -41,7 +41,7 @@ export default function AddForm() {
     <AddFormStyled action="submmit" onSubmit={handleSubmit}>
       <div className="realImage">
         {newProduct.imageSource.length != 0 ? (
-          <img src={newProduct.imageSource} />
+          <img src={newProduct.imageSource} alt={newProduct.title} />
         ) : (
           <p>Aucune Image</p>
         )}
