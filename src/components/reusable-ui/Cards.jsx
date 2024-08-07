@@ -6,14 +6,12 @@ import { ImCross } from "react-icons/im";
 
 
 export default function Cards({
-  id,
   imageFood,
   foodAltImg,
   Title,
   leftDescription,
-  isModeAdmin,
-  onClick,
-  handleDelete,
+  hasDeleteButton,
+  onDelete,
   ...restProps
 }) {
 
@@ -25,7 +23,7 @@ export default function Cards({
   //render
   return (
     <CardStyled>
-      {isModeAdmin && <button onClick ={() => handleDelete(id)} className="cross" aria-label="delete-button"><ImCross aria-label="cross-img"/>
+      {hasDeleteButton && <button onClick ={onDelete} className="cross" aria-label="delete-button"><ImCross aria-label="cross-img"/>
       </button>}
       <div className="imgFood">
         <img src={imageFood} alt={foodAltImg} />

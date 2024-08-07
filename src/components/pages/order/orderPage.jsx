@@ -23,10 +23,7 @@ export default function OrderPage() {
 
 
 
-  const handleDelete = (id) => {
-    const deleteProduct = menu.filter(item => item.id != id)
-    setMenu(deleteProduct)
-  }
+  
   
   const handleAddProduct = (newProductToAdd) => {
      
@@ -36,6 +33,15 @@ export default function OrderPage() {
     setAddSuccess(true);
     setTimeout(() => setAddSuccess(false), 2000);
   };
+
+  const handleDelete = (idToDelete) => {
+    //1. Copie du state
+    const menuCopy = [...menu]
+    //2. Manip de la copie du state
+    const updatedMenu = menuCopy.filter((product) => product.id !== idToDelete)  
+    //3. Update du state
+    setMenu(updatedMenu)
+  }
 
   
   const orderContextValue = {
@@ -49,7 +55,7 @@ export default function OrderPage() {
     handleAddProduct,
     addSuccess,
     setAddSuccess,
-    handleDelete,
+    handleDelete
   };
 
   //affichage
