@@ -11,8 +11,8 @@ import Button from "../../reusable-ui/Button";
 export default function LoginForm() {
   //state
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("toto");
+  const [password, setPassword] = useState("toto");
 
   //comportements
   const handleChange = (event) => {
