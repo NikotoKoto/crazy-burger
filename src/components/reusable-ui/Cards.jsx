@@ -25,7 +25,7 @@ export default function Cards({
   //render
   return (
     <CardStyled>
-      {isModeAdmin && <button onClick ={() => handleDelete(id)} className="cross"><ImCross />
+      {isModeAdmin && <button onClick ={() => handleDelete(id)} className="cross" aria-label="delete-button"><ImCross aria-label="cross-img"/>
       </button>}
       <div className="imgFood">
         <img src={imageFood} alt={foodAltImg} />
