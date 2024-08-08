@@ -10,12 +10,15 @@ import Button from "../../../reusable-ui/Button";
 
 const IMAGE_BY_DEFAULT = "/public/images/coming-soon.png"
 export default function Menu() {
-  const { isModeAdmin, menu, handleDelete,resetMenu} = useContext(OrderContext)
+  const { isModeAdmin, menu, handleDelete,resetMenu, setProductSelected} = useContext(OrderContext)
   //state
 
  
   //comportement
-
+  const handleClick = (idOfCardClicked) => {
+    const productSelected = menu.find((product) => product.id === idOfCardClicked )
+    setProductSelected(productSelected)
+    }
 
   //render
   return (
@@ -38,7 +41,7 @@ export default function Menu() {
         </div>)
        ):
       (
-        
+
       menu.map(({ id, title, imageSource, price }) => (
         
         <Cards
@@ -47,8 +50,10 @@ export default function Menu() {
           Title={title}
           leftDescription={formatPrice(price)}
           foodAltImg={title}
+          className ={isModeAdmin && "cardHover"}
           hasDeleteButton={isModeAdmin} 
           onDelete={() => handleDelete(id)}
+          onClick={() => handleClick(id)}
           />
       )))}
     </MenuStyled>
@@ -94,4 +99,14 @@ const MenuStyled = styled.div`
       text-transform: uppercase;
     }
   }
+
+  .cardHover {
+    &:hover{
+      background-color: ${theme.colors.loginLine};
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+      
+    }
+  
 `;

@@ -6,21 +6,24 @@ import Main from "./main/Main";
 import Navbar from "./navbar/Navbar";
 import OrderContext from "../../../context/OrderContext";
 import { fakeMenu } from "../../../fakeData/fakeMenu";
+import { EMPTY_PRODUCT } from "../../../enums/product";
 
 export default function OrderPage() {
   // state
   const { username } = useParams();
-  const [isModeAdmin, setIsModeAdmin] = useState(false);
+  const [isModeAdmin, setIsModeAdmin] = useState(true);
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [currentTabSelected, setCurrentTabSelected] = useState("add");
+  const [currentTabSelected, setCurrentTabSelected] = useState("edit");
   const [menu, setMenu] = useState(fakeMenu.LARGE);
   const [addSuccess, setAddSuccess] = useState(false);
- 
+  const [productSelected, setProductSelected] = useState({EMPTY_PRODUCT})
+  
 
 
 
   // comportements
 
+ 
 
 
   
@@ -61,6 +64,8 @@ export default function OrderPage() {
     handleDelete,
     setMenu,
     resetMenu,
+    productSelected,
+    setProductSelected
   };
 
   //affichage

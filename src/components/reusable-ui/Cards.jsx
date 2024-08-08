@@ -12,6 +12,8 @@ export default function Cards({
   leftDescription,
   hasDeleteButton,
   onDelete,
+  className,
+  onClick,
   ...restProps
 }) {
 
@@ -22,7 +24,7 @@ export default function Cards({
 
   //render
   return (
-    <CardStyled>
+    <CardStyled className={className} onClick={onClick}>
       {hasDeleteButton && <button onClick ={onDelete} className="cross" aria-label="delete-button"><ImCross aria-label="cross-img"/>
       </button>}
       <div className="imgFood">
