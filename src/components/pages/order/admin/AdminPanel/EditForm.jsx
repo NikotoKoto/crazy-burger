@@ -5,18 +5,36 @@ import styled from "styled-components";
 import InputFields from "../../../../reusable-ui/inputFields";
 import { theme } from "../../../../../theme";
 import { HiCursorClick } from "react-icons/hi";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import OrderContext from "../../../../../context/OrderContext";
+import { EMPTY_PRODUCT } from "../../../../../enums/product";
 
 export default function EditForm() {
 
   //state
-const {productSelected} = useContext(OrderContext)
+const {productSelected,handleEditProduct, setProductSelected} = useContext(OrderContext)
+//const [newProductEdited, setNewProductEdited] = useState(EMPTY_PRODUCT);
   //comportement
+
+
+  /*const handleSubmitProduct = (event) => {
+    event.preventDefault()
+    const newProductUpdated = {
+      ...newProductEdited,
+    };
+    
+  }*/
+
+  const handleChange = (event) => {
+    const {name, value} = event.target
+    const newProductUpdated = { ...productSelected, [name]: value };
+    setProductSelected(newProductUpdated)
+    handleEditProduct(newProductUpdated)
+  };
 
   //render
   return (
-    <EditFormStyled action="submit">
+    <EditFormStyled action="submit" onSubmit="{handleSubmitProduct}">
 
       <div className="realImageEdit">
 
@@ -25,28 +43,28 @@ const {productSelected} = useContext(OrderContext)
       </div>
       <div>
         <InputFields
-          name= {productSelected.title}
+          name= "title"
           value={productSelected.title}
           placeholder="Nom du produit"
           Icon={<PiHamburgerLight />}
-          onChange=""
+          onChange={handleChange}
         />
 
         <InputFields
-          name={productSelected.imageSource}
+          name="imageSource"
           alt={productSelected.imageSource}
           value={productSelected.imageSource}
           placeholder="Lien URL d'une image (ex: https://la-photo-de-mon-produit.png)"
           Icon={<FaCameraRetro />}
-          onChange=""
+          onChange={handleChange}
         />
 
         <InputFields
-          name={productSelected.price}
+          name="price"
           value={productSelected.price}
           placeholder="Prix"
           Icon={<LuEuro />}
-          onChange=""
+          onChange={handleChange}
         />
         <div className="clickOnCard">
         <span> Cliquez sur un produit du menu pour le modifier</span>

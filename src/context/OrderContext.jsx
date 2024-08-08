@@ -25,4 +25,5 @@ export default createContext({
 
     resetMenu: () => {},
 
+    handleEditProduct: () => {},
 })

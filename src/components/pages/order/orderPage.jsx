@@ -16,7 +16,7 @@ export default function OrderPage() {
   const [currentTabSelected, setCurrentTabSelected] = useState("edit");
   const [menu, setMenu] = useState(fakeMenu.LARGE);
   const [addSuccess, setAddSuccess] = useState(false);
-  const [productSelected, setProductSelected] = useState({EMPTY_PRODUCT})
+  const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
   
 
 
@@ -25,12 +25,11 @@ export default function OrderPage() {
 
  
 
-
   
   
   const handleAddProduct = (newProductToAdd) => {
      
-    const copyMenu = [...menu];
+    const copyMenu = JSON.parse(JSON.stringify(menu));
     const updateMenu = [newProductToAdd, ...copyMenu];
     setMenu(updateMenu);
     setAddSuccess(true);
@@ -39,12 +38,30 @@ export default function OrderPage() {
 
   const handleDelete = (idToDelete) => {
     //1. Copie du state
-    const menuCopy = [...menu]
+    const menuCopy = JSON.parse(JSON.stringify(menu))
     //2. Manip de la copie du state
     const updatedMenu = menuCopy.filter((product) => product.id !== idToDelete)  
     //3. Update du state
     setMenu(updatedMenu)
   }
+  
+  const handleEditProduct = (newProductEdited) => {
+     //1. Copie du state
+
+    const copyMenu = JSON.parse(JSON.stringify(menu));
+
+    //2. Manip de la copie du state
+    const indexOfProductToEdit = menu.findIndex((product) => product.id === newProductEdited.id)
+    
+    console.log("indexOfProductToEdit: ",indexOfProductToEdit)
+    
+    copyMenu[indexOfProductToEdit] = newProductEdited
+
+    //3. Update du state
+
+    setMenu(copyMenu)
+  }
+  
 
   const resetMenu = () => {
     setMenu(fakeMenu.LARGE)
@@ -65,7 +82,8 @@ export default function OrderPage() {
     setMenu,
     resetMenu,
     productSelected,
-    setProductSelected
+    setProductSelected,
+    handleEditProduct
   };
 
   //affichage
