@@ -17,13 +17,7 @@ const {productSelected,handleEditProduct, setProductSelected} = useContext(Order
   //comportement
 
 
-  /*const handleSubmitProduct = (event) => {
-    event.preventDefault()
-    const newProductUpdated = {
-      ...newProductEdited,
-    };
-    
-  }*/
+ 
 
   const handleChange = (event) => {
     const {name, value} = event.target
@@ -34,7 +28,7 @@ const {productSelected,handleEditProduct, setProductSelected} = useContext(Order
 
   //render
   return (
-    <EditFormStyled action="submit" onSubmit="{handleSubmitProduct}">
+    <EditFormStyled>
 
       <div className="realImageEdit">
 
