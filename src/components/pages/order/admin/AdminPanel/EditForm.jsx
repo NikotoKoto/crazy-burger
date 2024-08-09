@@ -13,12 +13,12 @@ export default function EditForm() {
 
   //state
 const {productSelected,handleEditProduct, setProductSelected} = useContext(OrderContext)
-//const [newProductEdited, setNewProductEdited] = useState(EMPTY_PRODUCT);
+
   //comportement
 
 
  
-
+// Gestionnaire d'évenements 
   const handleChange = (event) => {
     const {name, value} = event.target
     const newProductUpdated = { ...productSelected, [name]: value };

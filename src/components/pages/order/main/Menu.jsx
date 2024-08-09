@@ -16,8 +16,8 @@ export default function Menu() {
  
   //comportement
   const handleClick = (idOfCardClicked) => {
-    const productSelected = menu.find((product) => product.id === idOfCardClicked )
-    setProductSelected(productSelected)
+    const productClickedOn = menu.find((product) => product.id === idOfCardClicked )
+    setProductSelected(productClickedOn)
     }
 
   //render
@@ -105,6 +105,9 @@ const MenuStyled = styled.div`
       background-color: ${theme.colors.loginLine};
       transform: scale(1.05);
       cursor: pointer;
+    }
+    &:active{
+      transform: scale(0.95);
     }
       
     }
