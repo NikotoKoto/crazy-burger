@@ -55,7 +55,7 @@ const BasketStyled = styled.div`
 
   .body{
     
-    height:765px;
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
