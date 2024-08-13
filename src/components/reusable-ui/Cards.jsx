@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Button from "./Button";
 import { theme } from "../../theme";
 import { ImCross } from "react-icons/im";
@@ -14,6 +14,8 @@ export default function Cards({
   onDelete,
   className,
   onClick,
+  isHoverable,
+  isSelected,
   ...restProps
 }) {
 
@@ -24,7 +26,8 @@ export default function Cards({
 
   //render
   return (
-    <CardStyled className={className} onClick={onClick}>
+    <CardStyled className={className} onClick={onClick} isHoverable ={isHoverable}>
+      <div className="card" style={isSelected ? {background: `${theme.colors.loginLine}`} : {}}>
       {hasDeleteButton && <button onClick ={onDelete} className="cross" aria-label="delete-button"><ImCross aria-label="cross-img"/>
       </button>}
       <div className="imgFood">
@@ -38,13 +41,22 @@ export default function Cards({
           <Button label="Ajouter" className="styledButton" />
         </div>
       </div>
+      </div>
     </CardStyled>
   );
 }
 const CardStyled = styled.div`
+${(props) => props.isHoverable && hoverableStyle}
+
+
+border-radius: ${theme.borderRadius.extraRound};
+height: 330px;
+
+
+.card {
   width: 240px;
   height: 330px;
-  border-radius: 15px;
+  border-radius: ${theme.borderRadius.extraRound};
   box-shadow:${theme.shadows.medium};
   display: grid;
   position: relative;
@@ -140,4 +152,17 @@ const CardStyled = styled.div`
    
   }
 }
+
+}
+  `
+
+const hoverableStyle = css`
+  &:hover{
+      transform: scale(1.05);
+      box-shadow: ${theme.shadows.orangeHightLight};
+      cursor: pointer;
+    }
+    &:active{
+      transform: scale(0.95);
+    }
 `

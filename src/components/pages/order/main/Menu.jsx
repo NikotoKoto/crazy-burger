@@ -10,7 +10,7 @@ import Button from "../../../reusable-ui/Button";
 
 const IMAGE_BY_DEFAULT = "/public/images/coming-soon.png"
 export default function Menu() {
-  const { isModeAdmin, menu, handleDelete,resetMenu, setProductSelected} = useContext(OrderContext)
+  const { isModeAdmin, menu, handleDelete,resetMenu, setProductSelected,productSelected} = useContext(OrderContext)
   //state
 
  
@@ -19,6 +19,10 @@ export default function Menu() {
     const productClickedOn = menu.find((product) => product.id === idOfCardClicked )
     setProductSelected(productClickedOn)
     }
+
+    const checkIfProductIsSelected = (idProductInMenu, idProductClickedOn) => {
+      return idProductInMenu === idProductClickedOn 
+     }
 
   //render
   return (
@@ -50,10 +54,11 @@ export default function Menu() {
           Title={title}
           leftDescription={formatPrice(price)}
           foodAltImg={title}
-          className ={isModeAdmin && "cardHover"}
           hasDeleteButton={isModeAdmin} 
           onDelete={() => handleDelete(id)}
           onClick={() => handleClick(id)}
+          isHoverable = {isModeAdmin}
+          isSelected = {checkIfProductIsSelected(id,productSelected.id)}
           />
       )))}
     </MenuStyled>
@@ -100,16 +105,4 @@ const MenuStyled = styled.div`
     }
   }
 
-  .cardHover {
-    &:hover{
-      background-color: ${theme.colors.loginLine};
-      transform: scale(1.05);
-      cursor: pointer;
-    }
-    &:active{
-      transform: scale(0.95);
-    }
-      
-    }
-  
 `;
