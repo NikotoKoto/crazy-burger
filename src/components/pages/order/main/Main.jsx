@@ -14,7 +14,7 @@ export default function Main() {
   //render
   return (
     <MainStyled>
-      {/* <Basket /> */}
+      <Basket /> 
       <div className="menu-and-admin">
         <Menu />
         {isModeAdmin && <Admin />}
@@ -33,7 +33,7 @@ const MainStyled = styled.div`
   box-shadow: ${theme.shadows.strong};
 
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 25% 1fr;
 
   //Cacher la scrollbar pour tous les navigateurs
   &::-webkit-scrollbar {
