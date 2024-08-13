@@ -4,7 +4,7 @@ import AddForm from "./AdminPanel/AddForm"
 import EditForm from "./AdminPanel/EditForm"
 import HintMessage from "./AdminPanel/HintMessage"
 
-export const tabsConfig = [
+export const getTabsConfig = (hasAlreadyBeenClicked) =>[
   {
     index: "add",
     label: "Ajouter un produit",
@@ -15,10 +15,10 @@ export const tabsConfig = [
     index: "edit",
     label: "Modifier un produit",
     Icon: <MdModeEditOutline />,
-    Content: <EditForm/>
-    /*Content: <HintMessage/>*/
+    Content: hasAlreadyBeenClicked ? <EditForm /> : <HintMessage />,
   },
 ]
 
-export const getTabSelected = (tabs, currentTabSelected) =>
-  tabs.find((tab) => tab.index === currentTabSelected)
+export const getTabSelected = (tabs, currentTabSelected) =>{
+ return  tabs.find((tab) => tab.index === currentTabSelected)
+}

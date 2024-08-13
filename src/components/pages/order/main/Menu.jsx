@@ -50,8 +50,8 @@ export default function Menu() {
         
         <Cards
           key={id}
-          imageFood={imageSource ? imageSource : IMAGE_BY_DEFAULT  }
-          Title={title}
+          imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT  }
+          title={title}
           leftDescription={formatPrice(price)}
           foodAltImg={title}
           hasDeleteButton={isModeAdmin} 

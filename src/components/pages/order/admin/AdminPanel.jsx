@@ -1,18 +1,20 @@
 import { useContext } from "react";
 import styled from "styled-components";
 import OrderContext from "../../../../context/OrderContext";
-import { tabsConfig, getTabSelected } from "./TabConfig";
+import { getTabsConfig, getTabSelected } from "./TabConfig";
 import { theme } from "../../../../theme";
+import { EMPTY_PRODUCT } from "../../../../enums/product";
 
 export default function AdminPanel() {
-  const { currentTabSelected } = useContext(OrderContext);
+  const { currentTabSelected,productSelected } = useContext(OrderContext);
 
-  const tabs = tabsConfig;
+  const hasAlreadyBeenClicked = productSelected !== EMPTY_PRODUCT
+  const tabs = getTabsConfig(hasAlreadyBeenClicked)
   const tabSelected = getTabSelected(tabs, currentTabSelected);
 
   return (
     <AdminPanelStyled>
-      <p>{tabSelected.Content}</p></AdminPanelStyled>
+      {tabSelected && tabSelected.Content} </AdminPanelStyled>
   );
 }
 
