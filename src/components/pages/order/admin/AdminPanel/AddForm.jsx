@@ -7,13 +7,9 @@ import { LuEuro } from "react-icons/lu";
 import { theme } from "../../../../../theme";
 import OrderContext from "../../../../../context/OrderContext";
 import { useState } from "react";
+import { EMPTY_PRODUCT } from "../../../../../enums/product";
 
-const EMPTY_PRODUCT = {
-id: "",
-  title: "",
-  imageSource: "",
-  price: 0,
-};
+
 export default function AddForm() {
   //state
 

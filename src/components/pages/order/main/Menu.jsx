@@ -10,12 +10,19 @@ import Button from "../../../reusable-ui/Button";
 
 const IMAGE_BY_DEFAULT = "/public/images/coming-soon.png"
 export default function Menu() {
-  const { isModeAdmin, menu, handleDelete,resetMenu} = useContext(OrderContext)
+  const { isModeAdmin, menu, handleDelete,resetMenu, setProductSelected,productSelected} = useContext(OrderContext)
   //state
 
  
   //comportement
+  const handleClick = (idOfCardClicked) => {
+    const productClickedOn = menu.find((product) => product.id === idOfCardClicked )
+    setProductSelected(productClickedOn)
+    }
 
+    const checkIfProductIsSelected = (idProductInMenu, idProductClickedOn) => {
+      return idProductInMenu === idProductClickedOn 
+     }
 
   //render
   return (
@@ -38,17 +45,20 @@ export default function Menu() {
         </div>)
        ):
       (
-        
+
       menu.map(({ id, title, imageSource, price }) => (
         
         <Cards
           key={id}
-          imageFood={imageSource ? imageSource : IMAGE_BY_DEFAULT  }
-          Title={title}
+          imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT  }
+          title={title}
           leftDescription={formatPrice(price)}
           foodAltImg={title}
           hasDeleteButton={isModeAdmin} 
           onDelete={() => handleDelete(id)}
+          onClick={() => handleClick(id)}
+          isHoverable = {isModeAdmin}
+          isSelected = {checkIfProductIsSelected(id,productSelected.id)}
           />
       )))}
     </MenuStyled>
@@ -94,4 +104,5 @@ const MenuStyled = styled.div`
       text-transform: uppercase;
     }
   }
+
 `;
