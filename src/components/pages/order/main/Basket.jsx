@@ -30,7 +30,6 @@ export default function Basket() {
 const BasketStyled = styled.div`
     display: flex;
     flex-direction: column;
-    box-shadow: ${theme.shadows.strong};
     
 
     
@@ -64,6 +63,8 @@ const BasketStyled = styled.div`
     font-family: ${theme.fonts.family.stylish};
     color: ${theme.colors.greyDark};
     font-size: ${theme.fonts.size.P4};
+    box-shadow: ${theme.shadows.basket};
+
   }
 
   .footer{
@@ -75,6 +76,5 @@ const BasketStyled = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 0 0 0 ${theme.borderRadius.extraRound};
   }
 `
