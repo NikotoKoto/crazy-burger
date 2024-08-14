@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
 import Menu from "./Menu";
-import Basket from "./Basket";
+
 import Admin from "../admin/Admin";
 import OrderContext from "../../../../context/OrderContext";
 import { useContext } from "react";
+import Basket from "./Basket/Basket";
 
 export default function Main() {
   //state
