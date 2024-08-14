@@ -1,13 +1,13 @@
 import styled from "styled-components"
 import { theme } from "../../../../../theme"
 
-export default function Footer() {
+export default function FooterBasket() {
   return (
-    <FooterStyled>Codé avec 💘 et react.JS</FooterStyled>
+    <FooterBasketStyled>Codé avec 💘 et react.JS</FooterBasketStyled>
   )
 }
 
-const FooterStyled = styled.div`
+const FooterBasketStyled = styled.span`
     background: ${theme.colors.dark};
     font-family: ${theme.fonts.family.stylish};
     color: ${theme.colors.white};
