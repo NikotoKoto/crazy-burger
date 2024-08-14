@@ -11,7 +11,7 @@ import { EMPTY_PRODUCT } from "../../../enums/product";
 export default function OrderPage() {
   // state
   const { username } = useParams();
-  const [isModeAdmin, setIsModeAdmin] = useState(true);
+  const [isModeAdmin, setIsModeAdmin] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [currentTabSelected, setCurrentTabSelected] = useState("edit");
   const [menu, setMenu] = useState(fakeMenu.LARGE);
