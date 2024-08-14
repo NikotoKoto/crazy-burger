@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import { theme } from "../../../../theme";
 import Menu from "./Menu";
-import Basket from "./Basket";
+
 import Admin from "../admin/Admin";
 import OrderContext from "../../../../context/OrderContext";
 import { useContext } from "react";
+import Basket from "./Basket/Basket";
 
 export default function Main() {
   //state
@@ -14,7 +15,7 @@ export default function Main() {
   //render
   return (
     <MainStyled>
-      {/* <Basket /> */}
+      <Basket /> 
       <div className="menu-and-admin">
         <Menu />
         {isModeAdmin && <Admin />}
@@ -33,7 +34,8 @@ const MainStyled = styled.div`
   box-shadow: ${theme.shadows.strong};
 
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 25% 1fr;
+  overflow: hidden;
 
   //Cacher la scrollbar pour tous les navigateurs
   &::-webkit-scrollbar {

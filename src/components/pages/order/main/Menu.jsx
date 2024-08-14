@@ -67,7 +67,7 @@ export default function Menu() {
 
 const MenuStyled = styled.div`
   background: ${theme.colors.background_white};
-   grid-template-columns: repeat(4, 1fr);
+   grid-template-columns: repeat(3, 1fr);
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   display: grid;
   grid-row-gap: 60px;
