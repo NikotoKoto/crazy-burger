@@ -1,39 +1,37 @@
-import React from "react";
-import styled from "styled-components";
-import LogoImg from "../pages/login/assetsLogin/logo-orange.png"
-import { theme } from "../../theme";
-export default function Logo({className,onClick, ...restProps}) {
+import styled from "styled-components"
+import { theme } from "../../theme"
+
+export default function Logo({ className, onClick }) {
   return (
     <LogoStyled className={className} onClick={onClick}>
       <h1>CRAZEE</h1>
-      <img src={LogoImg} alt="logo_CrazeeBurger"/>
-      <h1> BURGER</h1>
+      <img src="/images/logo-orange.png" alt="logo-crazee-burger" />
+      <h1>BURGER</h1>
     </LogoStyled>
-  );
+  )
 }
+
 const LogoStyled = styled.div`
   display: flex;
   align-items: center;
 
-
-
   h1 {
-    font-family: "Amatic SC", cursive;
+    display: inline;
+    text-align: center;
+    color: ${theme.colors.primary};
     font-size: ${theme.fonts.size.P4};
-    font-weight: ${theme.fonts.weights.bold};
     line-height: 1em;
+    font-weight: ${theme.fonts.weights.bold};
     text-transform: uppercase;
     letter-spacing: 1.5px;
-    text-align: center;
-    color:${theme.colors.primary};
+    font-family: "Amatic SC", cursive;
   }
 
-  img{
+  img {
     object-fit: contain;
     object-position: center;
-    height: 50px;
-    width: 80px;
-    margin: 0 ${theme.gridUnit /2};
-
+    height: 60px;
+    width: 80px; // for Safari and Firefox
+    margin: 0 ${theme.gridUnit / 2}px;
   }
-`;
+`

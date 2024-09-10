@@ -184,12 +184,12 @@ const selectedStyle = css`
     color: ${theme.colors.primary};
     background-color: ${theme.colors.white};
     border: 1px solid ${theme.colors.white};
-    transition:  200ms ease-out;
+    transition: all 200ms ease-out;
     :hover {
       color: ${theme.colors.white};
       background-color: ${theme.colors.primary};
       border: 1px solid ${theme.colors.white};
-      transition:  200ms ease-out;
+      transition: all 200ms ease-out;
     }
     :active {
       background-color: ${theme.colors.white};

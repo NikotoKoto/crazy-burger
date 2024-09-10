@@ -1,55 +1,26 @@
-import styled from "styled-components";
-import { theme } from "../../../../theme";
-import Menu from "./Menu";
-
-import Admin from "../admin/Admin";
-import OrderContext from "../../../../context/OrderContext";
-import { useContext } from "react";
-import Basket from "./Basket/Basket";
+import styled from "styled-components"
+import { theme } from "../../../../theme"
+import MainRightSide from "./MainRightSide/MainRightSide"
+import Basket from "./Basket/Basket"
 
 export default function Main() {
-  //state
-  const { isModeAdmin } = useContext(OrderContext);
-  //comportement
-
-  //render
   return (
     <MainStyled>
-      <Basket /> 
-      <div className="menu-and-admin">
-        <Menu />
-        {isModeAdmin && <Admin />}
-      </div>
+      <Basket />
+      <MainRightSide />
     </MainStyled>
-  );
+  )
 }
 
 const MainStyled = styled.div`
-   background: ${theme.colors.background_white};
-  flex: 1; // or you can also use this : height: calc(95vh - 10vh);
+  background: ${theme.colors.background_white};
   height: calc(95vh - 10vh);
 
   border-bottom-left-radius: ${theme.borderRadius.extraRound};
   border-bottom-right-radius: ${theme.borderRadius.extraRound};
-  box-shadow: ${theme.shadows.strong};
+  box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
 
   display: grid;
   grid-template-columns: 25% 1fr;
   overflow: hidden;
-
-  //Cacher la scrollbar pour tous les navigateurs
-  &::-webkit-scrollbar {
-    width: 0;
-    height: 0;
-  }
-
-  /* cacher la scrollbar pour IE, Edge et Firefox */
-  -ms-overflow-style: none; /* IE et Edge */
-  scrollbar-width: none; /* Firefox */
-
-  .menu-and-admin {
-    position: relative;
-    overflow-y: hidden;
-    display: grid;
-  }
-`;
+`

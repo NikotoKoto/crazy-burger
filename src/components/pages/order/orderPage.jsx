@@ -1,71 +1,21 @@
-import { useState } from "react";
-import { useParams } from "react-router-dom";
-import styled from "styled-components";
-import { theme } from "../../../theme";
-import Main from "./main/Main";
-import Navbar from "./navbar/Navbar";
-import OrderContext from "../../../context/OrderContext";
-import { fakeMenu } from "../../../fakeData/fakeMenu";
-import { EMPTY_PRODUCT } from "../../../enums/product";
+import { useRef, useState } from "react"
+import styled from "styled-components"
+import { theme } from "../../../theme"
+import Main from "./Main/Main"
+import Navbar from "./Navbar/Navbar"
+import OrderContext from "../../../context/OrderContext"
+import { EMPTY_PRODUCT } from "../../../enums/product"
+import { useMenu } from "../../../hooks/useMenu"
 
 export default function OrderPage() {
   // state
-  const { username } = useParams();
-  const [isModeAdmin, setIsModeAdmin] = useState(false);
-  const [isCollapsed, setIsCollapsed] = useState(false);
-  const [currentTabSelected, setCurrentTabSelected] = useState("edit");
-  const [menu, setMenu] = useState(fakeMenu.LARGE);
-  const [addSuccess, setAddSuccess] = useState(false);
+  const [isModeAdmin, setIsModeAdmin] = useState(false)
+  const [isCollapsed, setIsCollapsed] = useState(false)
+  const [currentTabSelected, setCurrentTabSelected] = useState("add")
+  const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
-  
-
-
-
-  // comportements
-
- 
-
-  
-  
-  const handleAddProduct = (newProductToAdd) => {
-     
-    const copyMenu = JSON.parse(JSON.stringify(menu));
-    const updateMenu = [newProductToAdd, ...copyMenu];
-    setMenu(updateMenu);
-    setAddSuccess(true);
-    setTimeout(() => setAddSuccess(false), 2000);
-  };
-
-  const handleDelete = (idToDelete) => {
-    //1. Copie du state
-    const menuCopy = JSON.parse(JSON.stringify(menu))
-    //2. Manip de la copie du state
-    const updatedMenu = menuCopy.filter((product) => product.id !== idToDelete)  
-    //3. Update du state
-    setMenu(updatedMenu)
-  }
-  
-  const handleEditProduct = (newProductEdited) => {
-     //1. Copie du state
-
-    const copyMenu = JSON.parse(JSON.stringify(menu));
-
-    //2. Manip de la copie du state
-    const indexOfProductToEdit = menu.findIndex((product) => product.id === newProductEdited.id)
-    
-    console.log("indexOfProductToEdit: ",indexOfProductToEdit)
-    
-    copyMenu[indexOfProductToEdit] = newProductEdited
-
-    //3. Update du state
-
-    setMenu(copyMenu)
-  }
-  
-
-  const resetMenu = () => {
-    setMenu(fakeMenu.LARGE)
-   }
+  const titleEditRef = useRef()
+  const { menu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu()
 
   const orderContextValue = {
     isModeAdmin,
@@ -75,28 +25,28 @@ export default function OrderPage() {
     currentTabSelected,
     setCurrentTabSelected,
     menu,
-    handleAddProduct,
-    addSuccess,
-    setAddSuccess,
+    handleAdd,
     handleDelete,
-    setMenu,
     resetMenu,
+    newProduct,
+    setNewProduct,
     productSelected,
     setProductSelected,
-    handleEditProduct
-  };
+    handleEdit,
+    titleEditRef,
+  }
 
   //affichage
   return (
     <OrderContext.Provider value={orderContextValue}>
       <OrderPageStyled>
         <div className="container">
-          <Navbar username={username} />
+          <Navbar />
           <Main />
         </div>
       </OrderPageStyled>
     </OrderContext.Provider>
-  );
+  )
 }
 
 const OrderPageStyled = styled.div`
@@ -114,4 +64,4 @@ const OrderPageStyled = styled.div`
     flex-direction: column;
     border-radius: ${theme.borderRadius.extraRound};
   }
-`;
+`
