@@ -1,59 +1,72 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { theme } from "../../../../theme";
+import { BsPersonCircle } from "react-icons/bs"
+import { Link, useParams } from "react-router-dom"
+import styled from "styled-components"
+import { theme } from "../../../../theme"
 
-export default function Profile({ username, ...restProps }) {
+export default function Profile() {
+  const { username } = useParams()
+
   return (
     <ProfileStyled>
-      <p>
-        Hey <span>{username}</span>
-      </p>
-      <Link to="/">
-        <a>Se déconnecter</a>
-      </Link>
+      <div className="info">
+        <p>
+          Hey, <b>{username}</b>
+        </p>
+        <Link to="/">
+          <div className="description">
+            <small>Se déconnecter</small>
+          </div>
+        </Link>
+      </div>
+      <div className="picture">
+        <BsPersonCircle />
+      </div>
     </ProfileStyled>
-  );
+  )
 }
 
 const ProfileStyled = styled.div`
-  font-size: ${theme.fonts.size.SM};
-  color: ${theme.colors.greyBlue};
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 100px;
   padding-left: 50px;
 
-  span {
-    font-size: ${theme.fonts.size.SM};
-    font-weight: ${theme.fonts.weights.bold};
-    color: ${theme.colors.primary};
+  .info {
+    text-align: right;
+    margin-right: 10px;
+    p {
+      margin: 0;
+      color: ${theme.colors.greyBlue};
+      b {
+        color: ${theme.colors.primary};
       }
-
-  a {
-    position: relative;
-    display: inline-block;
-    text-decoration: none;
-    color: ${theme.colors.greyMedium};
-    font-size: ${theme.fonts.size.XS};
-
-    a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -2px;
-      width: 100%;
-      height: 2px;
-      background: ${theme.colors.primary};
-      transform: scaleX(0);
-      transition: transform 0.3s ease;
     }
-
-    a:hover {
-      color: ${theme.colors.primary};
-      transform: translateY(-2px);
-    }
-
-    a:hover::after {
-      transform: scaleX(1);
+    a {
+      text-decoration: none;
+      .description {
+        &:hover {
+          text-decoration: underline;
+          color: ${theme.colors.greyDark};
+        }
+        small {
+          font-size: ${theme.fonts.size.XXS};
+          color: ${theme.colors.greyBlue};
+          font-weight: ${theme.fonts.weights.medium};
+          text-decoration: none;
+          position: relative;
+          bottom: 2px;
+        }
+      }
     }
   }
-`;
+
+  .picture {
+    /* border: 1px solid red; */
+    height: auto;
+    display: flex;
+    height: 100%;
+    font-size: ${theme.fonts.size.P4};
+    color: ${theme.colors.greyBlue};
+  }
+`

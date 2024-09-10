@@ -5,7 +5,7 @@ import { theme } from "../../../theme";
 import { BsPerson } from "react-icons/bs";
 import { IoChevronForward } from "react-icons/io5";
 import { IoIosLock } from "react-icons/io";
-import TextInput from "../../reusable-ui/Input";
+import TextInput from "../../reusable-ui/TextInput";
 import Button from "../../reusable-ui/Button";
 
 export default function LoginForm() {
@@ -37,11 +37,13 @@ export default function LoginForm() {
       <hr />
       <h2>Connectez-vous</h2>
 
+      <div>
       <TextInput
         value={username}
         onChange={handleChange}
         placeholder={"Entrez votre prénom"}
         required
+        className="input-login"
         Icon={<BsPerson className="icon-login" />}
       />
 
@@ -51,12 +53,15 @@ export default function LoginForm() {
         placeholder={"Entrez mot de passe"}
         required
         type="password"
+        className="input-login"
         Icon={<IoIosLock className="icon-login" />}
       />
       <Button
         label="Acceder à mon espace"
         IconButton={<IoChevronForward className="icon-button" />}
       />
+      </div>
+      
     </LoginFormStyled>
   );
 }
@@ -71,6 +76,7 @@ const LoginFormStyled = styled.form`
   margin: 0px auto;
   padding: 2.5rem ${theme.spacing.lg};
   border-radius: ${theme.borderRadius.round};
+  
 
   hr {
     border: 1.5px solid ${theme.colors.loginLine};
@@ -84,5 +90,9 @@ const LoginFormStyled = styled.form`
     color: ${theme.colors.white};
     font-size: ${theme.fonts.size.P4};
     margin: 20px 10px 10px;
+  }
+
+  .input-login{
+    margin-bottom: 15px;
   }
 `;
