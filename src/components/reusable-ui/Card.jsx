@@ -12,6 +12,7 @@ export default function Card({
   onClick,
   isHoverable,
   isSelected,
+  onAdd,
 }) {
   // state (vide)
 
@@ -24,6 +25,7 @@ export default function Card({
       onClick={onClick}
       isHoverable={isHoverable}
       isSelected={isSelected}
+      onAdd= {onAdd}
     >
       <div className="card">
         {hasDeleteButton && (

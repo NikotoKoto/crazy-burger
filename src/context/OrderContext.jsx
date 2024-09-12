@@ -28,5 +28,5 @@ export default createContext({
     handleEditProduct: () => {},
 
     basket: [],
-    
+    handleAddToBasket : () => {},
 })
