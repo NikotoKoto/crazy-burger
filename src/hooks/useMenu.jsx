@@ -6,7 +6,7 @@ export const useMenu = () => {
   const [menu, setMenu] = useState(fakeMenu.LARGE)
 
   // comportements (gestionnaire de state ou "state handlers")
-  const handleAdd = (newProduct) => {
+  const handleAddToMenu = (newProduct) => {
     // 1. copie du tableau
     const menuCopy = deepClone(menu)
 
@@ -47,5 +47,5 @@ export const useMenu = () => {
     setMenu(fakeMenu.MEDIUM)
   }
 
-  return { menu, setMenu, handleAdd, handleDelete, handleEdit, resetMenu }
+  return { menu, setMenu, handleAddToMenu, handleDelete, handleEdit, resetMenu }
 }
