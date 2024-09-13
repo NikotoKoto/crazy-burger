@@ -1,8 +1,8 @@
-import React from "react"
-import styled, { css } from "styled-components"
-import { MdDeleteForever } from "react-icons/md"
-import { theme } from "../../../../../theme"
-import { formatPrice } from "../../../../../utils/math"
+import React from "react";
+import styled, { css } from "styled-components";
+import { MdDeleteForever } from "react-icons/md";
+import { theme } from "../../../../../theme";
+import { formatPrice } from "../../../../../utils/math";
 
 export default function BasketCard({
   title,
@@ -12,16 +12,14 @@ export default function BasketCard({
   className,
   isModeAdmin,
   onDelete,
-  hasDeleteButton
+
 }) {
   return (
     <BasketCardStyled className={className} isModeAdmin={isModeAdmin}>
-      {hasDeleteButton &&(
       <div className="delete-button" onClick={onDelete}>
-     
         <MdDeleteForever className="icon" />
       </div>
-       )}
+
       <div className="image">
         <img src={imageSource} alt={title} />
       </div>
@@ -37,7 +35,7 @@ export default function BasketCard({
         </div>
       </div>
     </BasketCardStyled>
-  )
+  );
 }
 
 const BasketCardStyled = styled.div`
@@ -128,9 +126,7 @@ const BasketCardStyled = styled.div`
     display: none;
     z-index: 1;
   }
-
-  /* hover de la card */
-  :hover {
+  &:hover {
     .delete-button {
       /* border: 1px solid red; */
       border: none;
@@ -156,16 +152,20 @@ const BasketCardStyled = styled.div`
       }
 
       /* behaviour on delete-button hover */
-      :hover {
-        .icon {
+      &:hover {
+        
           color: ${theme.colors.dark};
-        }
-        :active {
-          .icon {
+        
+        &:active {
+          
             color: ${theme.colors.white};
-          }
+          
         }
       }
     }
   }
-`
+
+
+`;
+
+

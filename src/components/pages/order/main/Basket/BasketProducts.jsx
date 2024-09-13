@@ -4,8 +4,19 @@ import { IMAGE_COMING_SOON } from "../../../../../enums/product";
 import { useContext } from "react";
 import OrderContext from "../../../../../context/OrderContext";
 
-export default function BasketProducts({ basket }) {
-  const { isModeAdmin } = useContext(OrderContext);
+
+export default function BasketProducts({ basket, isModeAdmin, onDelete}) {
+  //state
+  const {handleDeleteBasket } = useContext(OrderContext)
+
+//Comportement
+  const handleCardBasketDelete = (event,idProductToDelete) => {
+    event.stopPropagation()
+    handleDeleteBasket(idProductToDelete)
+    
+  
+    }
+    //render
   return (
     <BasketProductsStyled>
       {basket.map((basketProduct) => (
@@ -17,7 +28,8 @@ export default function BasketProducts({ basket }) {
                 ? basketProduct.imageSource
                 : IMAGE_COMING_SOON
             }
-            hasDeleteButton={isModeAdmin}
+            isModeAdmin={isModeAdmin}
+            onDelete={(event) => handleCardBasketDelete(event, basketProduct.id)}
 
           />
         </div>
@@ -32,7 +44,7 @@ const BasketProductsStyled = styled.div`
   flex-direction: column;
   overflow-y: auto;
 
-  ::-webkit-scrollbar {
+  &::-webkit-scrollbar {
     display: none;
   }
 
