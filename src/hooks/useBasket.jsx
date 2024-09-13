@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { fakeBasket } from "../fakeData/fakeBasket";
-import { deepClone, findInArray } from "../utils/array";
+import { deepClone, findInArray, findIndex } from "../utils/array";
 
 export const useBasket = () => {
-  const [basket, setBasket] = useState(fakeBasket.SMALL);
+  const [basket, setBasket] = useState(fakeBasket.EMPTY);
 
   const handleAddToBasket = (productToAdd) => {
     // Copie du state
@@ -23,16 +23,17 @@ export const useBasket = () => {
       const basketUpdated = [newBasketProduct, ...basketCopy];
       // update du state
       setBasket(basketUpdated);
-    } else {
-      // 2ieme cas : Le produit doit être incrementer de 1
-      const indexOfBasketProductToIncrement = basket.findIndex(
-        (basketProduct) => basketProduct.id === productToAdd.id
-      );
-      // Increment the quantity of the product
-      basketCopy[indexOfBasketProductToIncrement].quantity += 1;
-
-      setBasket(basketCopy)
+      return;
     }
+    // 2ieme cas : the product should increase when I click on it
+    const indexOfBasketProductToIncrement = findIndex(
+      productToAdd.id,
+      basketCopy
+    );
+    // Increment the quantity of the product
+    basketCopy[indexOfBasketProductToIncrement].quantity += 1;
+
+    setBasket(basketCopy);
   };
 
   return { basket, handleAddToBasket };

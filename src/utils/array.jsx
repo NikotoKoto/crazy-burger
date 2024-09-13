@@ -6,6 +6,10 @@ export const deepClone = (array) => {
 export const findInArray = (id,array) => { 
   return array.find((itemInArray) => itemInArray.id === id)
  }
+
+ export const findIndex = (id, array) => { 
+  return array.findIndex((itemToFind) => itemToFind.id === id)
+  }
 // const fruits = [{ nom: "Abricot" }, { nom: "Banane" }]
 // const fruitsShallowCopy = [...fruits]
 // const fruitsDeepCopy = deepClone(fruits)

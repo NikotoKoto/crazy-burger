@@ -1,8 +1,11 @@
 import styled from "styled-components";
 import BasketCard from "./BasketCard";
 import { IMAGE_COMING_SOON } from "../../../../../enums/product";
+import { useContext } from "react";
+import OrderContext from "../../../../../context/OrderContext";
 
 export default function BasketProducts({ basket }) {
+  const { isModeAdmin } = useContext(OrderContext);
   return (
     <BasketProductsStyled>
       {basket.map((basketProduct) => (
@@ -14,6 +17,8 @@ export default function BasketProducts({ basket }) {
                 ? basketProduct.imageSource
                 : IMAGE_COMING_SOON
             }
+            hasDeleteButton={isModeAdmin}
+
           />
         </div>
       ))}
