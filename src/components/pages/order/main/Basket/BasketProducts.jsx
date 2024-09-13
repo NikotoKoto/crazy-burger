@@ -1,18 +1,24 @@
-import React from "react";
 import styled from "styled-components";
 import BasketCard from "./BasketCard";
 import { IMAGE_COMING_SOON } from "../../../../../enums/product";
 
-export default function BasketProducts({basket}) {
-  return(
-     <BasketProductsStyled>
-    {basket.map((basketProduct) => (
-        <div className="basket-card">
-        <BasketCard  {...basketProduct} imageSource={basketProduct.imageSource ? basketProduct.imageSource : IMAGE_COMING_SOON}/>
+export default function BasketProducts({ basket }) {
+  return (
+    <BasketProductsStyled>
+      {basket.map((basketProduct) => (
+        <div key={basketProduct.id} className="basket-card">
+          <BasketCard
+            {...basketProduct}
+            imageSource={
+              basketProduct.imageSource
+                ? basketProduct.imageSource
+                : IMAGE_COMING_SOON
+            }
+          />
         </div>
-    ))}
+      ))}
     </BasketProductsStyled>
-  )
+  );
 }
 
 const BasketProductsStyled = styled.div`
@@ -20,16 +26,14 @@ const BasketProductsStyled = styled.div`
   display: flex;
   flex-direction: column;
   overflow-y: auto;
- 
-  ::-webkit-scrollbar{
+
+  ::-webkit-scrollbar {
     display: none;
   }
 
-  .basket-card{
-    margin: 10px 16px ;
+  .basket-card {
+    margin: 10px 16px;
     height: 86px;
     box-sizing: border-box;
-  
-    
   }
 `;

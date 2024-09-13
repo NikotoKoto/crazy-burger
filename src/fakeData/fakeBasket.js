@@ -8,6 +8,7 @@ export const SMALL = [
     imageSource: "images/burger1.png",
     quantity: 1,
   },
+ 
 ]
 
 export const MEDIUM = [
