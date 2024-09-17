@@ -6,6 +6,7 @@ import Navbar from "./Navbar/Navbar"
 import OrderContext from "../../../context/OrderContext"
 import { EMPTY_PRODUCT } from "../../../enums/product"
 import { useMenu } from "../../../hooks/useMenu"
+import { useBasket } from "../../../hooks/useBasket"
 
 export default function OrderPage() {
   // state
@@ -15,8 +16,8 @@ export default function OrderPage() {
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
-  const { menu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu()
-
+  const { menu, handleAddToMenu, handleDelete, handleEdit, resetMenu } = useMenu()
+  const {basket,handleAddToBasket, handleDeleteBasket} = useBasket();
   const orderContextValue = {
     isModeAdmin,
     setIsModeAdmin,
@@ -25,7 +26,7 @@ export default function OrderPage() {
     currentTabSelected,
     setCurrentTabSelected,
     menu,
-    handleAdd,
+    handleAddToMenu,
     handleDelete,
     resetMenu,
     newProduct,
@@ -34,6 +35,9 @@ export default function OrderPage() {
     setProductSelected,
     handleEdit,
     titleEditRef,
+    basket,
+    handleAddToBasket,
+    handleDeleteBasket,
   }
 
   //affichage

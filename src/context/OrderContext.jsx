@@ -26,4 +26,9 @@ export default createContext({
     resetMenu: () => {},
 
     handleEditProduct: () => {},
+
+    basket: [],
+    handleAddToBasket : () => {},
+    handleDeleteBasket : () => {},
+    
 })

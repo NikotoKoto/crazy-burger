@@ -7,7 +7,7 @@ import SubmitButton from "./SubmitButton"
 
 export default function AddForm() {
   // state
-  const { handleAdd, newProduct, setNewProduct } = useContext(OrderContext)
+  const { handleAddToMenu, newProduct, setNewProduct } = useContext(OrderContext)
   const { isSubmitted, displaySuccessMessage } = useSuccessMessage()
 
   // comportements
@@ -18,7 +18,7 @@ export default function AddForm() {
       id: crypto.randomUUID(),
     }
 
-    handleAdd(newProductToAdd)
+    handleAddToMenu(newProductToAdd)
     setNewProduct(EMPTY_PRODUCT)
 
     displaySuccessMessage()

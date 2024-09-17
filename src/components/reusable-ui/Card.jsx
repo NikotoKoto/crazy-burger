@@ -12,6 +12,7 @@ export default function Card({
   onClick,
   isHoverable,
   isSelected,
+  onAdd,
 }) {
   // state (vide)
 
@@ -24,6 +25,7 @@ export default function Card({
       onClick={onClick}
       isHoverable={isHoverable}
       isSelected={isSelected}
+      
     >
       <div className="card">
         {hasDeleteButton && (
@@ -43,7 +45,7 @@ export default function Card({
               <Button
                 className="primary-button"
                 label={"Ajouter"}
-                onClick={(event) => event.stopPropagation()}
+                onClick={onAdd}
               />
             </div>
           </div>

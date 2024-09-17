@@ -7,9 +7,10 @@ import Card from "../../../../../reusable-ui/Card"
 import EmptyMenuAdmin from "./EmptyMenuAdmin"
 import EmptyMenuClient from "./EmptyMenuClient"
 import { checkIfProductIsClicked } from "./helper"
-import { EMPTY_PRODUCT } from "../../../../../../enums/product"
+import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from "../../../../../../enums/product"
+import { findInArray } from "../../../../../../utils/array"
 
-const IMAGE_BY_DEFAULT = "/images/coming-soon.png"
+
 
 export default function Menu() {
   const {
@@ -22,6 +23,7 @@ export default function Menu() {
     setIsCollapsed,
     setCurrentTabSelected,
     titleEditRef,
+    handleAddToBasket,
   } = useContext(OrderContext)
   // state
 
@@ -31,7 +33,7 @@ export default function Menu() {
 
     await setIsCollapsed(false)
     await setCurrentTabSelected("edit")
-    const productClickedOn = menu.find((product) => product.id === idProductClicked)
+    const productClickedOn = findInArray(idProductClicked,menu)
     await setProductSelected(productClickedOn)
     titleEditRef.current.focus()
   }
@@ -49,6 +51,14 @@ export default function Menu() {
     titleEditRef.current.focus()
   }
 
+  const handleAddButton = (event, idProductToAdd) => {
+    //seet à eviter de lancer les eveneemnts de click sur les boutons ou on en a pas besoin
+    event => event.stopPropagation()
+    const productToAdd = findInArray(idProductToAdd, menu)
+    handleAddToBasket(productToAdd)
+    
+   }
+
   return (
     <MenuStyled className="menu">
       {menu.map(({ id, title, imageSource, price }) => {
@@ -56,13 +66,14 @@ export default function Menu() {
           <Card
             key={id}
             title={title}
-            imageSource={imageSource ? imageSource : IMAGE_BY_DEFAULT}
+            imageSource={imageSource ? imageSource : IMAGE_COMING_SOON}
             leftDescription={formatPrice(price)}
             hasDeleteButton={isModeAdmin}
             onDelete={(event) => handleCardDelete(event, id)}
             onClick={() => handleClick(id)}
             isHoverable={isModeAdmin}
             isSelected={checkIfProductIsClicked(id, productSelected.id)}
+            onAdd={(event) => handleAddButton(event, id)}
           />
         )
       })}
@@ -80,4 +91,9 @@ const MenuStyled = styled.div`
   justify-items: center;
   box-shadow: 0px 8px 20px 8px rgba(0, 0, 0, 0.2) inset;
   overflow-y: scroll;
+  &::-webkit-scrollbar {
+  display: none;
+}
+
+
 `
