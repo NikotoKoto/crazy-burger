@@ -1,8 +1,8 @@
-import React from "react";
-import styled, { css } from "styled-components";
-import { MdDeleteForever } from "react-icons/md";
-import { theme } from "../../../../../theme";
-import { formatPrice } from "../../../../../utils/math";
+import React from "react"
+import styled, { css } from "styled-components"
+import { MdDeleteForever } from "react-icons/md"
+import { theme } from "../../../../../theme"
+import { formatPrice } from "../../../../../utils/math"
 
 export default function BasketCard({
   title,
@@ -10,16 +10,21 @@ export default function BasketCard({
   quantity,
   imageSource,
   className,
-  isModeAdmin,
+  isClickable,
+  onClick,
   onDelete,
-
+  isSelected,
 }) {
   return (
-    <BasketCardStyled className={className} isModeAdmin={isModeAdmin}>
+    <BasketCardStyled
+      className={className}
+      isClickable={isClickable}
+      onClick={onClick}
+      isSelected={isSelected}
+    >
       <div className="delete-button" onClick={onDelete}>
         <MdDeleteForever className="icon" />
       </div>
-
       <div className="image">
         <img src={imageSource} alt={title} />
       </div>
@@ -35,11 +40,11 @@ export default function BasketCard({
         </div>
       </div>
     </BasketCardStyled>
-  );
+  )
 }
 
 const BasketCardStyled = styled.div`
-  cursor: ${({ isModeAdmin }) => (isModeAdmin ? "pointer" : "auto")};
+  cursor: ${({ isClickable }) => (isClickable ? "pointer" : "auto")};
   /* border: 1px solid red; */
   box-sizing: border-box;
   height: 86px;
@@ -126,7 +131,9 @@ const BasketCardStyled = styled.div`
     display: none;
     z-index: 1;
   }
-  &:hover {
+
+  /* hover de la card */
+  :hover {
     .delete-button {
       /* border: 1px solid red; */
       border: none;
@@ -152,20 +159,26 @@ const BasketCardStyled = styled.div`
       }
 
       /* behaviour on delete-button hover */
-      &:hover {
-        
+      :hover {
+        .icon {
           color: ${theme.colors.dark};
-        
-        &:active {
-          
+        }
+        :active {
+          .icon {
             color: ${theme.colors.white};
-          
+          }
         }
       }
     }
   }
 
+  ${({ isClickable, isSelected }) => isClickable && isSelected && selectedStyled}
+`
 
-`;
-
-
+const selectedStyled = css`
+  background: ${theme.colors.primary};
+  .price,
+  .quantity {
+    color: ${theme.colors.white};
+  }
+`

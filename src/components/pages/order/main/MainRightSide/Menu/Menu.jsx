@@ -8,7 +8,7 @@ import EmptyMenuAdmin from "./EmptyMenuAdmin"
 import EmptyMenuClient from "./EmptyMenuClient"
 import { checkIfProductIsClicked } from "./helper"
 import { EMPTY_PRODUCT, IMAGE_COMING_SOON } from "../../../../../../enums/product"
-import { findInArray } from "../../../../../../utils/array"
+import { findObjectById } from "../../../../../../utils/array"
 
 
 
@@ -33,7 +33,7 @@ export default function Menu() {
 
     await setIsCollapsed(false)
     await setCurrentTabSelected("edit")
-    const productClickedOn = findInArray(idProductClicked,menu)
+    const productClickedOn = findObjectById(idProductClicked,menu)
     await setProductSelected(productClickedOn)
     titleEditRef.current.focus()
   }
@@ -53,9 +53,8 @@ export default function Menu() {
 
   const handleAddButton = (event, idProductToAdd) => {
     //seet à eviter de lancer les eveneemnts de click sur les boutons ou on en a pas besoin
-    event => event.stopPropagation()
-    const productToAdd = findInArray(idProductToAdd, menu)
-    handleAddToBasket(productToAdd)
+    event.stopPropagation()
+    handleAddToBasket(idProductToAdd)
     
    }
 

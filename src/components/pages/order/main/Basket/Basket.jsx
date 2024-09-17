@@ -7,19 +7,14 @@ import { useContext } from "react";
 import { theme } from "../../../../../theme";
 import OrderContext from "../../../../../context/OrderContext";
 import BasketProducts from "./BasketProducts";
+import { isEmpty } from "../../../../../utils/array";
 
 export default function Basket() {
   
 
   //state
-  const { basket, isModeAdmin } = useContext(OrderContext);
-  const isBasketEmpty = basket.length === 0;
-
-  const totalToPay = basket.reduce((total, basketProduct) => {
-    
-     total += basketProduct.price * basketProduct.quantity
-     return total
-  },0)
+  const { basket } = useContext(OrderContext);
+  
 
   // Comportement 
 
@@ -27,8 +22,8 @@ export default function Basket() {
  //render 
   return (
     <BasketStyled>
-      <Total amountToPay={formatPrice(totalToPay)} />
-      {isBasketEmpty ? <EmptyBasket /> : <BasketProducts basket={basket} isModeAdmin={isModeAdmin} />}
+      <Total/>
+      {isEmpty(basket) ? <EmptyBasket /> : <BasketProducts/>}
       <Footer />
     </BasketStyled>
   );
