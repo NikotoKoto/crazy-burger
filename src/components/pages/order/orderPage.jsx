@@ -9,15 +9,17 @@ import { useMenu } from "../../../hooks/useMenu"
 import { useBasket } from "../../../hooks/useBasket"
 import { findObjectById } from "../../../utils/array"
 import { getUser } from "../../../api/user"
+import { useParams } from "react-router-dom"
 
 export default function OrderPage() {
   // state
-  const [isModeAdmin, setIsModeAdmin] = useState(true)
+  const [isModeAdmin, setIsModeAdmin] = useState(false)
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
+  const { username } = useParams()
   const { menu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu()
   const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
 
@@ -50,6 +52,7 @@ export default function OrderPage() {
     handleAddToBasket,
     handleDeleteBasketProduct,
     handleProductSelected,
+    username,
   }
 
 

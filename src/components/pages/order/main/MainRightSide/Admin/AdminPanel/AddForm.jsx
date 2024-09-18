@@ -8,7 +8,7 @@ import { replaceFrenchCommaWithDot } from "../../../../../../../utils/math"
 
 export default function AddForm() {
   // state
-  const { handleAddToMenu, newProduct, setNewProduct } = useContext(OrderContext)
+  const { handleAdd, newProduct, setNewProduct, username } = useContext(OrderContext)
   const { isSubmitted, displaySuccessMessage } = useSuccessMessage()
 
   // comportements
@@ -20,7 +20,7 @@ export default function AddForm() {
       price: replaceFrenchCommaWithDot(newProduct.price)
     }
 
-    handleAddToMenu(newProductToAdd)
+    handleAdd(newProductToAdd, username)
     setNewProduct(EMPTY_PRODUCT)
 
     displaySuccessMessage()

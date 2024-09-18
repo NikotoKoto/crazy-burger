@@ -21,7 +21,7 @@ export const addUser = (usernameId) => {
     //Food
     const nourriture = {
         username : usernameId,
-        menu: fakeMenu.SMALL,
+        menu: fakeMenu.EMPTY,
     }
 
     setDoc(docRef,nourriture)
