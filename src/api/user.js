@@ -21,8 +21,15 @@ export const addUser = (usernameId) => {
     //Food
     const nourriture = {
         username : usernameId,
-        menu: fakeMenu.LARGE,
+        menu: fakeMenu.SMALL,
     }
 
     setDoc(docRef,nourriture)
  }
+
+ export const authenticateUser = async (userId) => { 
+    const existingUser = await getUser(userId);
+    if(!existingUser){
+     addUser(userId)}
+     return existingUser
+  }

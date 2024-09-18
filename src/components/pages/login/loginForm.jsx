@@ -7,7 +7,7 @@ import { IoChevronForward } from "react-icons/io5";
 import { IoIosLock } from "react-icons/io";
 import TextInput from "../../reusable-ui/TextInput";
 import Button from "../../reusable-ui/Button";
-import { addUser } from "../../../api/user";
+import { addUser, authenticateUser, getUser } from "../../../api/user";
 
 export default function LoginForm() {
   //state
@@ -24,9 +24,9 @@ export default function LoginForm() {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    addUser(username)
+    await authenticateUser(username)
     setUsername("");
     setPassword("");
     navigate(`/order/${username}`);
