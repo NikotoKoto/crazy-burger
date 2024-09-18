@@ -1,56 +1,60 @@
-import styled from "styled-components";
-import BasketCard from "./BasketCard";
-import { IMAGE_COMING_SOON } from "../../../../../enums/product";
-import { useContext } from "react";
-import OrderContext from "../../../../../context/OrderContext";
+import { useContext } from "react"
+import styled from "styled-components"
+import { IMAGE_COMING_SOON } from "../../../../../enums/product"
+import BasketCard from "./BasketCard"
+import OrderContext from "../../../../../context/OrderContext"
+import { findObjectById } from "../../../../../utils/array"
+import { checkIfProductIsClicked } from "../MainRightSide/Menu/helper"
 
+export default function BasketProducts() {
+  const {
+    basket,
+    isModeAdmin,
+    handleDeleteBasketProduct,
+    menu,
+    handleProductSelected,
+    productSelected,
+  } = useContext(OrderContext)
 
-export default function BasketProducts({ basket, isModeAdmin, onDelete}) {
-  //state
-  const {handleDeleteBasket } = useContext(OrderContext)
-
-//Comportement
-  const handleCardBasketDelete = (event,idProductToDelete) => {
+  const handleOnDelete = (event, id) => {
     event.stopPropagation()
-    handleDeleteBasket(idProductToDelete)
-    
-  
-    }
-    //render
+    handleDeleteBasketProduct(id)
+  }
+
   return (
     <BasketProductsStyled>
-      {basket.map((basketProduct) => (
-        <div key={basketProduct.id} className="basket-card">
-          <BasketCard
-            {...basketProduct}
-            imageSource={
-              basketProduct.imageSource
-                ? basketProduct.imageSource
-                : IMAGE_COMING_SOON
-            }
-            isModeAdmin={isModeAdmin}
-            onDelete={(event) => handleCardBasketDelete(event, basketProduct.id)}
-
-          />
-        </div>
-      ))}
+      {basket.map((basketProduct) => {
+        const menuProduct = findObjectById(basketProduct.id, menu)
+        return (
+          <div className="basket-card" key={basketProduct.id}>
+            <BasketCard
+              {...menuProduct}
+              imageSource={menuProduct.imageSource ? menuProduct.imageSource : IMAGE_COMING_SOON}
+              quantity={basketProduct.quantity}
+              onDelete={(event) => handleOnDelete(event, basketProduct.id)}
+              isClickable={isModeAdmin}
+              onClick={isModeAdmin ? () => handleProductSelected(basketProduct.id) : null}
+              isSelected={checkIfProductIsClicked(basketProduct.id, productSelected.id)}
+            />
+          </div>
+        )
+      })}
     </BasketProductsStyled>
-  );
+  )
 }
 
 const BasketProductsStyled = styled.div`
+  /* border: 1px solid red; */
   flex: 1;
   display: flex;
   flex-direction: column;
-  overflow-y: auto;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  overflow-y: scroll;
 
   .basket-card {
+    /* border: 1px solid blue; */
     margin: 10px 16px;
     height: 86px;
     box-sizing: border-box;
+  
   }
-`;
+`
