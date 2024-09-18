@@ -1,4 +1,3 @@
-import React from "react"
 import { useContext } from "react"
 import styled from "styled-components"
 import { IMAGE_COMING_SOON } from "../../../../../enums/product"

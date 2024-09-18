@@ -7,17 +7,27 @@ import OrderContext from "../../../context/OrderContext"
 import { EMPTY_PRODUCT } from "../../../enums/product"
 import { useMenu } from "../../../hooks/useMenu"
 import { useBasket } from "../../../hooks/useBasket"
+import { findObjectById } from "../../../utils/array"
 
 export default function OrderPage() {
   // state
-  const [isModeAdmin, setIsModeAdmin] = useState(false)
+  const [isModeAdmin, setIsModeAdmin] = useState(true)
   const [isCollapsed, setIsCollapsed] = useState(false)
   const [currentTabSelected, setCurrentTabSelected] = useState("add")
   const [newProduct, setNewProduct] = useState(EMPTY_PRODUCT)
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
-  const { menu, handleAddToMenu, handleDelete, handleEdit, resetMenu } = useMenu()
-  const {basket,handleAddToBasket, handleDeleteBasket} = useBasket();
+  const { menu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu()
+  const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
+
+  const handleProductSelected = async (idProductClicked) => {
+    const productClickedOn = findObjectById(idProductClicked, menu)
+    await setIsCollapsed(false)
+    await setCurrentTabSelected("edit")
+    await setProductSelected(productClickedOn)
+    titleEditRef.current.focus()
+  }
+
   const orderContextValue = {
     isModeAdmin,
     setIsModeAdmin,
@@ -26,7 +36,7 @@ export default function OrderPage() {
     currentTabSelected,
     setCurrentTabSelected,
     menu,
-    handleAddToMenu,
+    handleAdd,
     handleDelete,
     resetMenu,
     newProduct,
@@ -37,7 +47,8 @@ export default function OrderPage() {
     titleEditRef,
     basket,
     handleAddToBasket,
-    handleDeleteBasket,
+    handleDeleteBasketProduct,
+    handleProductSelected,
   }
 
   //affichage

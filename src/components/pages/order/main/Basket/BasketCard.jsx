@@ -1,4 +1,4 @@
-import React from "react"
+
 import styled, { css } from "styled-components"
 import { MdDeleteForever } from "react-icons/md"
 import { theme } from "../../../../../theme"
@@ -133,7 +133,7 @@ const BasketCardStyled = styled.div`
   }
 
   /* hover de la card */
-  :hover {
+  &:hover {
     .delete-button {
       /* border: 1px solid red; */
       border: none;
