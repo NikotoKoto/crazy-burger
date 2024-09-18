@@ -8,6 +8,7 @@ import { IoIosLock } from "react-icons/io";
 import TextInput from "../../reusable-ui/TextInput";
 import Button from "../../reusable-ui/Button";
 import { addUser, authenticateUser, getUser } from "../../../api/user";
+import Welcome from "./Welcome";
 
 export default function LoginForm() {
   //state
@@ -39,10 +40,8 @@ export default function LoginForm() {
   //render
   return (
     <LoginFormStyled action="submmit" onSubmit={handleSubmit}>
-      <h1>Bievenue chez nous !</h1>
-      <hr />
-      <h2>Connectez-vous</h2>
-
+      
+    <Welcome/>
       <div>
       <TextInput
         value={username}
@@ -84,19 +83,6 @@ const LoginFormStyled = styled.form`
   border-radius: ${theme.borderRadius.round};
   
 
-  hr {
-    border: 1.5px solid ${theme.colors.loginLine};
-    margin-bottom: ${theme.gridUnit *5}px;
-  }
-  h1 {
-    color: ${theme.colors.white};
-    font-size: ${theme.fonts.size.P5};
-  }
-  h2 {
-    color: ${theme.colors.white};
-    font-size: ${theme.fonts.size.P4};
-    margin: 20px 10px 10px;
-  }
 
   .input-login{
     margin-bottom: 15px;
