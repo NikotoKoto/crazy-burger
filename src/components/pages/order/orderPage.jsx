@@ -8,6 +8,7 @@ import { EMPTY_PRODUCT } from "../../../enums/product"
 import { useMenu } from "../../../hooks/useMenu"
 import { useBasket } from "../../../hooks/useBasket"
 import { findObjectById } from "../../../utils/array"
+import { getUser } from "../../../api/user"
 
 export default function OrderPage() {
   // state
@@ -51,6 +52,8 @@ export default function OrderPage() {
     handleProductSelected,
   }
 
+
+ getUser("Bob");
   //affichage
   return (
     <OrderContext.Provider value={orderContextValue}>

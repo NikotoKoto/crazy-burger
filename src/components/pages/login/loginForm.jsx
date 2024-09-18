@@ -7,12 +7,13 @@ import { IoChevronForward } from "react-icons/io5";
 import { IoIosLock } from "react-icons/io";
 import TextInput from "../../reusable-ui/TextInput";
 import Button from "../../reusable-ui/Button";
+import { addUser } from "../../../api/user";
 
 export default function LoginForm() {
   //state
   const navigate = useNavigate();
-  const [username, setUsername] = useState("toto");
-  const [password, setPassword] = useState("toto");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   //comportements
   const handleChange = (event) => {
@@ -25,10 +26,15 @@ export default function LoginForm() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    addUser(username)
     setUsername("");
     setPassword("");
     navigate(`/order/${username}`);
   };
+
+
+
+ 
 
   //render
   return (
