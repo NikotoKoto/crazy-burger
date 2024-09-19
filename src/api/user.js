@@ -14,14 +14,14 @@ export const getUser = async (idUser) => {
 
 
 
-export const addUser = (usernameId) => { 
+export const addUser = (userId) => { 
     // Shelter
-    const docRef = doc(db, "users", usernameId)
+    const docRef = doc(db, "users", userId)
 
     //Food
     const nourriture = {
-        username : usernameId,
-        menu: fakeMenu.EMPTY,
+        username : userId,
+        menu: fakeMenu.LARGE,
     }
 
     setDoc(docRef,nourriture)

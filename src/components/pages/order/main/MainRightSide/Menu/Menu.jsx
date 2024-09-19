@@ -21,13 +21,14 @@ export default function Menu() {
     handleAddToBasket,
     handleDeleteBasketProduct,
     handleProductSelected,
+    username,
   } = useContext(OrderContext)
   // state
 
   // comportements (gestionnaires d'événement ou "event handlers")
   const handleCardDelete = (event, idProductToDelete) => {
     event.stopPropagation()
-    handleDelete(idProductToDelete)
+    handleDelete(idProductToDelete, username)
     handleDeleteBasketProduct(idProductToDelete)
     idProductToDelete === productSelected.id && setProductSelected(EMPTY_PRODUCT)
   }
