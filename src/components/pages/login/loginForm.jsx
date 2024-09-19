@@ -7,7 +7,7 @@ import { IoChevronForward } from "react-icons/io5";
 import { IoIosLock } from "react-icons/io";
 import TextInput from "../../reusable-ui/TextInput";
 import Button from "../../reusable-ui/Button";
-import { addUser, authenticateUser, getUser } from "../../../api/user";
+import {  authenticateUser  } from "../../../api/user";
 import Welcome from "./Welcome";
 
 export default function LoginForm() {
@@ -27,12 +27,17 @@ export default function LoginForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await authenticateUser(username)
+    const user = await authenticateUser(username, password);
+    // Si l'authentification échoue (user est null), arrêter le processus
+    if (!user) {
+      // Ne pas réinitialiser les champs ou rediriger si l'authentification échoue
+      return;
+    }
+      // Si l'authentification réussit, réinitialiser les champs et rediriger
     setUsername("");
     setPassword("");
-    navigate(`/order/${username}`);
+    navigate(`/order/${user.username}`);  // Utilisez le nom d'utilisateur authentifié
   };
-
 
 
  
