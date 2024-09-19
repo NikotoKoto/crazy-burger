@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import styled from "styled-components"
 import { theme } from "../../../theme"
 import Main from "./Main/Main"
@@ -10,6 +10,7 @@ import { useBasket } from "../../../hooks/useBasket"
 import { findObjectById } from "../../../utils/array"
 import { getUser } from "../../../api/user"
 import { useParams } from "react-router-dom"
+import { getMenu } from "../../../api/product"
 
 export default function OrderPage() {
   // state
@@ -20,7 +21,7 @@ export default function OrderPage() {
   const [productSelected, setProductSelected] = useState(EMPTY_PRODUCT)
   const titleEditRef = useRef()
   const { username } = useParams()
-  const { menu, handleAdd, handleDelete, handleEdit, resetMenu } = useMenu()
+  const { menu, setMenu,handleAdd, handleDelete, handleEdit, resetMenu } = useMenu()
   const { basket, handleAddToBasket, handleDeleteBasketProduct } = useBasket()
 
   const handleProductSelected = async (idProductClicked) => {
@@ -55,8 +56,15 @@ export default function OrderPage() {
     username,
   }
 
+  const initialiseMenu = async () => {
+    const menuReceived = await getMenu(username)
+    setMenu(menuReceived)
+  }
+  useEffect(() => initialiseMenu, [])
+  
 
- getUser("Bob");
+
+
   //affichage
   return (
     <OrderContext.Provider value={orderContextValue}>

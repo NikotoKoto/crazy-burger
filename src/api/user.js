@@ -6,7 +6,7 @@ import bcrypt from 'bcryptjs'
 
 
 export const getUser = async (userId) => {
-  try {
+try {
     const docRef = doc(db, "users", userId);
     const docSnapshot = await getDoc(docRef);
 
@@ -28,7 +28,7 @@ export const getUser = async (userId) => {
 
 
     export const addUser = async (userId, password) => { 
-      console.log("Ajout de l'utilisateur :", userId);
+      
       const hashedPassword = await bcrypt.hash(password, 10); // Hacher le mot de passe
       //Shelter
       const docRef = doc(db, "users", userId);
