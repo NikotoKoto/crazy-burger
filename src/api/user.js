@@ -5,9 +5,9 @@ import bcrypt from 'bcryptjs'
 
 
 
-export const getUser = async (idUser) => {
+export const getUser = async (userId) => {
   try {
-    const docRef = doc(db, "users", idUser);
+    const docRef = doc(db, "users", userId);
     const docSnapshot = await getDoc(docRef);
 
     // Vérifier si l'utilisateur existe dans Firestore
@@ -16,7 +16,7 @@ export const getUser = async (idUser) => {
       return userReceived;
     } 
       // Retourner null si l'utilisateur n'est pas trouvé
-      
+      return null;
     
   } catch (error) {
     // Gestion des erreurs liées à Firestore (optionnel)
@@ -28,6 +28,7 @@ export const getUser = async (idUser) => {
 
 
     export const addUser = async (userId, password) => { 
+      console.log("Ajout de l'utilisateur :", userId);
       const hashedPassword = await bcrypt.hash(password, 10); // Hacher le mot de passe
       //Shelter
       const docRef = doc(db, "users", userId);
@@ -48,10 +49,11 @@ export const getUser = async (idUser) => {
   const existingUser = await getUser(userId);
 
     if (!existingUser) {
-         addUser(userId,password);
+         await addUser(userId,password);
     }
 
     // Comparer le mot de passe haché
+    console.log(existingUser) 
     const isPasswordCorrect = await bcrypt.compare(password, existingUser.password);
     if (!isPasswordCorrect) {
        alert("Mot de passe incorrect");

@@ -8,5 +8,5 @@ export const syncBotMenus = (userId, menuUpdated) => {
         menu: menuUpdated
     }
 
-    setDoc(shelter, food)
+    setDoc(shelter, food , { merge: true })
  }
