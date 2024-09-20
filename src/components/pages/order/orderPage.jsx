@@ -9,8 +9,7 @@ import { useMenu } from "../../../hooks/useMenu";
 import { useBasket } from "../../../hooks/useBasket";
 import { findObjectById } from "../../../utils/array";
 import { useParams } from "react-router-dom";
-import { getMenu } from "../../../api/product";
-import { getLocalStorage } from "../../../utils/window";
+import { initialiseUserSession } from "./Helper/initialiseUserSession";
 
 export default function OrderPage() {
   // state
@@ -58,22 +57,9 @@ export default function OrderPage() {
     username,
   };
 
-  const initialiseMenu = async () => {
-    const menuReceived = await getMenu(username);
-    setMenu(menuReceived);
-  };
-
-  const initialiseBasket = () => {
-    const basketReceived = getLocalStorage(username); // localSotrage est synchrone pas besoin de "await"
-    if (basketReceived) setBasket(basketReceived);
-  };
-  const initialiseUserSession = async () => {
-    await initialiseMenu();
-    initialiseBasket();
-  };
 
   useEffect(() => {
-    initialiseUserSession();
+    initialiseUserSession(setBasket,setMenu,username);
   }, []);
 
   //affichage
