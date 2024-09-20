@@ -1,7 +1,7 @@
 import { getMenu } from "../../../../api/product";
 import { getLocalStorage } from "../../../../utils/window";
 
-export const initialiseUserSession = async (setMenu, setBasket, username) => {F
+export const initialiseUserSession = async (setMenu, setBasket, username) => {
   const initialiseMenu = async () => {
     const menuReceived = await getMenu(username);
     setMenu(menuReceived);
