@@ -1,33 +1,36 @@
 import { useState } from "react"
 import { fakeBasket } from "../fakeData/fakeBasket"
 import { deepClone, findObjectById, findIndexById, removeObjectById } from "../utils/array"
+import { setLocalStorage } from "../utils/window"
 
 export const useBasket = () => {
   const [basket, setBasket] = useState(fakeBasket.EMPTY)
 
-  const handleAddToBasket = (idProductToAdd) => {
+  const handleAddToBasket = (idProductToAdd, username) => {
     const basketCopy = deepClone(basket)
     const productAlreadyInBasket = findObjectById(idProductToAdd, basketCopy)
 
     if (productAlreadyInBasket) {
-      incrementProductAlreadyInBasket(idProductToAdd, basketCopy)
+      incrementProductAlreadyInBasket(idProductToAdd, username, basketCopy)
       return
     }
 
-    createNewBasketProduct(idProductToAdd, basketCopy, setBasket)
+    createNewBasketProduct(idProductToAdd, basketCopy,username, setBasket)
   }
 
-  const incrementProductAlreadyInBasket = (idProductToAdd, basketCopy) => {
+  const incrementProductAlreadyInBasket = (idProductToAdd, username, basketCopy) => {
     const indexOfBasketProductToIncrement = findIndexById(idProductToAdd, basketCopy)
     basketCopy[indexOfBasketProductToIncrement].quantity += 1
     setBasket(basketCopy)
+    setLocalStorage(username, basketCopy)
   }
 
-  const createNewBasketProduct = (idProductToAdd, basketCopy, setBasket) => {
+  const createNewBasketProduct = (idProductToAdd, basketCopy, username, setBasket) => {
     // we do not re-create a whole product, we only add the extra info a basket product has in comparison to a menu product
     const newBasketProduct = { id: idProductToAdd, quantity: 1 }
     const newBasket = [newBasketProduct, ...basketCopy]
     setBasket(newBasket)
+    setLocalStorage(username, newBasket)
   }
 
   const handleDeleteBasketProduct = (idBasketProduct) => {
