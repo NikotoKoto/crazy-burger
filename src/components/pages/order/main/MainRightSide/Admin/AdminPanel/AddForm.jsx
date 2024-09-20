@@ -4,10 +4,11 @@ import { EMPTY_PRODUCT } from "../../../../../../../enums/product"
 import { useSuccessMessage } from "../../../../../../../hooks/useSuccessMessage"
 import Form from "./Form"
 import SubmitButton from "./SubmitButton"
+import { replaceFrenchCommaWithDot } from "../../../../../../../utils/math"
 
 export default function AddForm() {
   // state
-  const { handleAddToMenu, newProduct, setNewProduct } = useContext(OrderContext)
+  const { handleAdd, newProduct, setNewProduct, username } = useContext(OrderContext)
   const { isSubmitted, displaySuccessMessage } = useSuccessMessage()
 
   // comportements
@@ -16,9 +17,10 @@ export default function AddForm() {
     const newProductToAdd = {
       ...newProduct,
       id: crypto.randomUUID(),
+      price: replaceFrenchCommaWithDot(newProduct.price)
     }
 
-    handleAddToMenu(newProductToAdd)
+    handleAdd(newProductToAdd, username)
     setNewProduct(EMPTY_PRODUCT)
 
     displaySuccessMessage()

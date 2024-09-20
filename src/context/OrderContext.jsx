@@ -10,6 +10,8 @@ export default createContext({
   currentTabSelected: false,
   setCurrentTabSelected: () => {},
 
+  username: "",
+
   menu: [],
   handleAdd: () => {},
   handleDelete: () => {},

@@ -7,12 +7,14 @@ import { IoChevronForward } from "react-icons/io5";
 import { IoIosLock } from "react-icons/io";
 import TextInput from "../../reusable-ui/TextInput";
 import Button from "../../reusable-ui/Button";
+import {  authenticateUser  } from "../../../api/user";
+import Welcome from "./Welcome";
 
 export default function LoginForm() {
   //state
   const navigate = useNavigate();
-  const [username, setUsername] = useState("toto");
-  const [password, setPassword] = useState("toto");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   //comportements
   const handleChange = (event) => {
@@ -23,20 +25,28 @@ export default function LoginForm() {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+    const user = await authenticateUser(username, password);
+    // Si l'authentification échoue (user est null), arrêter le processus
+    if (!user) {
+      // Ne pas réinitialiser les champs ou rediriger si l'authentification échoue
+      return;
+    }
+      // Si l'authentification réussit, réinitialiser les champs et rediriger
     setUsername("");
     setPassword("");
-    navigate(`/order/${username}`);
+    navigate(`/order/${user.username}`);  // Utilisez le nom d'utilisateur authentifié
   };
+
+
+ 
 
   //render
   return (
     <LoginFormStyled action="submmit" onSubmit={handleSubmit}>
-      <h1>Bievenue chez nous !</h1>
-      <hr />
-      <h2>Connectez-vous</h2>
-
+      
+    <Welcome/>
       <div>
       <TextInput
         value={username}
@@ -78,19 +88,6 @@ const LoginFormStyled = styled.form`
   border-radius: ${theme.borderRadius.round};
   
 
-  hr {
-    border: 1.5px solid ${theme.colors.loginLine};
-    margin-bottom: ${theme.gridUnit *5}px;
-  }
-  h1 {
-    color: ${theme.colors.white};
-    font-size: ${theme.fonts.size.P5};
-  }
-  h2 {
-    color: ${theme.colors.white};
-    font-size: ${theme.fonts.size.P4};
-    margin: 20px 10px 10px;
-  }
 
   .input-login{
     margin-bottom: 15px;

@@ -14,11 +14,12 @@ export default function BasketProducts() {
     menu,
     handleProductSelected,
     productSelected,
+    username,
   } = useContext(OrderContext)
 
   const handleOnDelete = (event, id) => {
     event.stopPropagation()
-    handleDeleteBasketProduct(id)
+    handleDeleteBasketProduct(id, username)
   }
 
   return (
