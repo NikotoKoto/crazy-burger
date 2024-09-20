@@ -15,7 +15,7 @@ export default function Basket() {
   //state
   const { basket,menu } = useContext(OrderContext);
   
-  if(menu === undefined) return <Loader/>
+
 
   // Comportement 
 
@@ -24,7 +24,7 @@ export default function Basket() {
   return (
     <BasketStyled>
       <Total/>
-      {isEmpty(basket) ? <EmptyBasket /> : <BasketProducts/>}
+      {isEmpty(basket) ? <EmptyBasket isLoading={menu === undefined}/> : <BasketProducts/>}
       <Footer />
     </BasketStyled>
   );
